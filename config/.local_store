@@ -168,15 +168,17 @@
         "mmState": "clean"
     },
     "PersonalDetails.component": {
-        "createdById": "0057F000002DJ3SQAW",
-        "createdByName": "Ramu Veligeti",
-        "createdDate": "2018-03-01T04:24:25.000Z",
-        "fileName": "unpackaged/components/PersonalDetails.component",
-        "fullName": "PersonalDetails",
         "id": "0997F000000MKvTQAW",
+        "name": "PersonalDetails",
+        "createdDate": "2018-03-01T04:24:25.000+0000",
+        "createdById": "0057F000002DJ3SQAW",
+        "namespacePrefix": null,
         "lastModifiedById": "0057F000002DJ3SQAW",
+        "lastModifiedDate": "2018-03-08T00:27:11.000+0000",
+        "fullName": "PersonalDetails",
+        "fileName": "unpackaged/components/PersonalDetails.component",
+        "createdByName": "Ramu Veligeti",
         "lastModifiedByName": "Ramu Veligeti",
-        "lastModifiedDate": "2018-03-07T22:51:28.000Z",
         "manageableState": "unmanaged",
         "type": "ApexComponent",
         "mmState": "clean"

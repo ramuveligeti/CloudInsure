@@ -1,0 +1,2140 @@
+<apex:component >
+    <div id="PageBody">
+
+        <div class="question-group">
+            <div class="question-body">
+
+                <div id="Q3533" class="question-label"><span style="text-align:right;float:right;"><span style="color:red">*</span>Indicates a required field</span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="ls">
+            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                <tbody>
+                    <tr>
+
+                        <td class="lccell" style="width:20%"></td>
+                        <td class="lccell"></td>
+                        <td class="lccell" style="width:50%"></td>
+                    </tr>
+                    <tr>
+
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q364" class="question-label"><b><span style="font-size:12pt;">Detail for</span></b></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q366" class="question-label"><b><span style="font-size:12pt;">Ramu&nbsp;Veligeti</span></b></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q367" class="question-label"><b><span style="font-size:12pt;">Pavitra&nbsp;Veligeti</span></b></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ls">
+            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                <tbody>
+                    <tr>
+
+                        <td class="lccell" style="width:20%"></td>
+                        <td class="lccell"></td>
+                        <td class="lccell" style="width:30%"></td>
+                        <td class="lccell" style="width:20%"></td>
+                    </tr>
+                    <tr>
+
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q371" class="question-label">Are you happy to provide these details?</div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <label id="Q374Text" for="Q374" class="sr-only">Are you happy to provide these details? C1 <span class="m">*</span></label>
+
+                                        <select class="form-control" id="Q374" name="Q374" onchange="wiz.reload()">
+                                            <option></option>
+                                            <option selected="selected" value="501">Yes, provide details</option>
+                                            <option value="497">No, I choose not to provide these details</option>
+                                            <option value="498">I do not know what these details are</option>
+                                            <option value="11878">Not applicable</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <label id="Q375Text" for="Q375" class="sr-only">Are you happy to provide these details? C2 <span class="m">*</span></label>
+
+                                        <select class="form-control" id="Q375" name="Q375" onchange="wiz.reload()">
+                                            <option></option>
+                                            <option selected="selected" value="502">Yes, provide details</option>
+                                            <option value="499">No, I choose not to provide these details</option>
+                                            <option value="500">I do not know what these details are</option>
+                                            <option value="11879">Not applicable</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q4505" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q4507" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ls">
+            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                <tbody>
+                    <tr>
+
+                        <td class="lccell" style="width:20%"></td>
+                        <td class="lccell"></td>
+                        <td class="lccell" style="width:50%"></td>
+                    </tr>
+                    <tr>
+
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q368" class="question-label">IRD Number</div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <label for="Q369" class="sr-only">IRD Number</label>
+
+                                        <input type="text" id="Q369" name="Q369" value="" placeholder="" class="form-control" spellcheck="true" style="width:100px" />
+
+                                    </div>
+                                </div>
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q3774" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <label for="Q370" class="sr-only">IRD Number</label>
+
+                                        <input type="text" id="Q370" name="Q370" value="" placeholder="" class="form-control" spellcheck="true" style="width:100px" />
+
+                                    </div>
+                                </div>
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q3798" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ls">
+            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                <tbody>
+                    <tr>
+
+                        <td class="lccell" style="width:20%"></td>
+                        <td class="lccell"></td>
+                        <td class="lccell" style="width:50%"></td>
+                    </tr>
+                    <tr>
+
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q378" class="question-label">Income tax rate (%)</div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <label for="Q383" class="sr-only">Income tax rate</label>
+
+                                        <input type="text" id="Q383" name="Q383" value="" placeholder="" class="form-control" pattern="\d*" style="width:100px" maxlength="29" />
+
+                                    </div>
+                                </div>
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q3775" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <label for="Q384" class="sr-only">Income tax rate</label>
+
+                                        <input type="text" id="Q384" name="Q384" value="" placeholder="" class="form-control" pattern="\d*" style="width:100px" maxlength="29" />
+
+                                    </div>
+                                </div>
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q3797" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ls">
+            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                <tbody>
+                    <tr>
+
+                        <td class="lccell" style="width:20%"></td>
+                        <td class="lccell"></td>
+                        <td class="lccell" style="width:50%"></td>
+                    </tr>
+                    <tr>
+
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q382" class="question-label">PIR rate (%)</div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <label for="Q385" class="sr-only">PIR rate</label>
+
+                                        <input type="text" id="Q385" name="Q385" value="" placeholder="" class="form-control" pattern="\d*" style="width:100px" maxlength="29" />
+
+                                    </div>
+                                </div>
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q3776" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <label for="Q386" class="sr-only">PIR rate</label>
+
+                                        <input type="text" id="Q386" name="Q386" value="" placeholder="" class="form-control" pattern="\d*" style="width:100px" maxlength="29" />
+
+                                    </div>
+                                </div>
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q3796" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ls">
+            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                <tbody>
+                    <tr>
+
+                        <td class="lccell" style="width:20%"></td>
+                        <td class="lccell"></td>
+                        <td class="lccell" style="width:50%"></td>
+                    </tr>
+                    <tr>
+
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q388" class="question-label">Sick leave entitlement (days)</div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <label for="Q407" class="sr-only">Sick leave entitlement (days)</label>
+
+                                        <input type="text" id="Q407" name="Q407" value="" placeholder="" class="form-control" pattern="\d*" style="width:50px" maxlength="29" />
+
+                                    </div>
+                                </div>
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q3780" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <label for="Q408" class="sr-only">Sick leave entitlement (days)</label>
+
+                                        <input type="text" id="Q408" name="Q408" value="" placeholder="" class="form-control" pattern="\d*" style="width:50px" maxlength="29" />
+
+                                    </div>
+                                </div>
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q3792" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ls">
+            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                <tbody>
+                    <tr>
+
+                        <td class="lccell" style="width:20%"></td>
+                        <td class="lccell" style="width:5%"></td>
+                        <td class="lccell" style="width:6%"></td>
+                        <td class="lccell" style="width:10%"></td>
+                        <td class="lccell"></td>
+                        <td class="lccell" style="width:5%"></td>
+                        <td class="lccell" style="width:6%"></td>
+                        <td class="lccell" style="width:10%"></td>
+                        <td class="lccell"></td>
+                        <td class="lccell" style="width:20%"></td>
+                    </tr>
+                    <tr>
+
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q406" class="question-label">Main source of income</div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <label id="Q411Text" for="Q411" class="sr-only">Main source of income</label>
+
+                                        <select class="form-control" id="Q411" name="Q411" onchange="wiz.reload()">
+                                            <option></option>
+                                            <option value="544">Salary / Wages</option>
+                                            <option value="545">Self employed</option>
+                                            <option value="546">Other</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q3643" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q3465" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q4509" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <label id="Q414Text" for="Q414" class="sr-only">Main source of income </label>
+
+                                        <select class="form-control" id="Q414" name="Q414" onchange="wiz.reload()">
+                                            <option></option>
+                                            <option value="549">Salary / Wages</option>
+                                            <option value="550">Self employed</option>
+                                            <option value="551">Other</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q3464" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q3642" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q3463" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q4508" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q4520" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ls">
+            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                <tbody>
+                    <tr>
+
+                        <td class="lccell" style="width:20%"></td>
+                        <td class="lccell"></td>
+                        <td class="lccell" style="width:50%"></td>
+                    </tr>
+                    <tr>
+
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q405" class="question-label">Expected retirement age</div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <label for="Q417" class="sr-only">Expected retirement age</label>
+
+                                        <input type="text" id="Q417" name="Q417" value="" placeholder="" class="form-control" pattern="\d*" style="width:50px" maxlength="29" />
+
+                                    </div>
+                                </div>
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q3799" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <label for="Q419" class="sr-only">Expected retirement age</label>
+
+                                        <input type="text" id="Q419" name="Q419" value="" placeholder="" class="form-control" pattern="\d*" style="width:50px" maxlength="29" />
+
+                                    </div>
+                                </div>
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q3800" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ls">
+            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                <tbody>
+                    <tr>
+
+                        <td class="lccell" style="width:50%"></td>
+                        <td class="lccell" style="width:50%"></td>
+                    </tr>
+                    <tr>
+
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="ls lsrepeat ">
+                                    <div class="lsh">Add Employment Details Client</div>
+                                    <div class="lsd">Please add the previous employment details if your current employment is less than 3 years.</div>
+                                    <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                        <thead>
+                                            <tr>
+                                                <td class="lccell lccellselect"></td>
+
+                                                <td class="lccell"></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="sortableRow ui-sortable" data-fragmentguid="cb2339b9-7897-4459-85ad-5dc615deb3ae" data-objectid="071db270-522e-4424-8cf8-718d27183679" data-repeatpath="">
+
+                                            <tr data-index="0" class="lsrepeat-row">
+                                                <td class="touchable lccell lccellselect ui-sortable-handle">
+                                                    <div class="lc lcselect">
+                                                        <span class="MoveIcon MoveIconSection"><span class="sr-only">Move Row</span></span>
+                                                        <label class="sr-only" for="L071db270-522e-4424-8cf8-718d27183679selectRow">Select Row</label>
+                                                        <input type="checkbox" name="L071db270-522e-4424-8cf8-718d27183679_chkSelect" value="0" class="row-select" id="L071db270-522e-4424-8cf8-718d27183679selectRow" />
+                                                    </div>
+                                                </td>
+                                                <td class="lccell">
+                                                    <div class="lc">
+
+                                                        <div class="ls">
+                                                            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                <tbody>
+                                                                    <tr>
+
+                                                                        <td class="lccell" style="width:40%"></td>
+                                                                        <td class="lccell"></td>
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4448_0" class="question-label">Employment status</div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <label id="Q4450_0Text" for="Q4450_0" class="sr-only">Employment status Mnl LA1</label>
+
+                                                                                        <select class="form-control" id="Q4450_0" name="Q4450_0">
+                                                                                            <option></option>
+                                                                                            <option value="12421">Full time</option>
+                                                                                            <option value="12422">Part time</option>
+                                                                                            <option value="12423">Casual</option>
+                                                                                            <option value="12424">Commission</option>
+                                                                                            <option value="12425">Contractor</option>
+                                                                                            <option value="12426">Home Duties</option>
+                                                                                            <option value="12427">Not Employed</option>
+                                                                                            <option value="12428">Retired</option>
+                                                                                            <option value="12429">Salary</option>
+                                                                                            <option value="12430">Self Employed</option>
+                                                                                            <option value="12431">Student</option>
+                                                                                            <option value="12432">Wages</option>
+                                                                                            <option value="12433">Other</option>
+                                                                                        </select>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4453_0" class="question-label"></div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                        <div class="ls">
+                                                            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                <tbody>
+                                                                    <tr>
+
+                                                                        <td class="lccell" style="width:40%"></td>
+                                                                        <td class="lccell"></td>
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4454_0" class="question-label">Job title</div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <label for="Q4455_0" class="sr-only">Job title</label>
+
+                                                                                        <input type="text" id="Q4455_0" name="Q4455_0" value="" placeholder="" class="form-control" spellcheck="true" style="width:250px" />
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4456_0" class="question-label"></div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                        <div class="ls">
+                                                            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                <tbody>
+                                                                    <tr>
+
+                                                                        <td class="lccell" style="width:40%"></td>
+                                                                        <td class="lccell"></td>
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4457_0" class="question-label">Start date</div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <label for="Q4458_0" class="sr-only">Start date</label>
+
+                                                                                        <div class="input-group" style="width:200px">
+                                                                                            <input type="text" id="Q4458_0" name="Q4458_0" class="form-control hasDatepicker" value="" />
+                                                                                            <span class="input-group-btn">
+        <button class="btn btn-default" type="button" onclick="$('#Q4458_0').datepicker('show');" title="Select Date" id="Q4458_0_btn">
+            <img width="12" height="11" alt="Select Date" src="/Images/calendar2.gif"/>
+        </button>
+    </span>
+                                                                                        </div>
+
+                                                                                        <script type="text/javascript">
+                                                                                            $('#Q4458_0').datepicker({
+                                                                                                showOn: 'none',
+                                                                                                changeMonth: true,
+                                                                                                changeYear: true,
+                                                                                                nextText: '>',
+                                                                                                prevText: '<',
+                                                                                                dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                                                                                                dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                                                                                                monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', ''],
+                                                                                                dateFormat: 'd/mm/yy',
+                                                                                                isRTL: false,
+                                                                                                yearRange: 'c-100:c+100',
+                                                                                                constrainInput: false,
+                                                                                                onSelect: function(tsDate, troPicker) {
+                                                                                                    $('#Q4458_0').focus();
+                                                                                                },
+
+                                                                                                onChangeMonthYear: function(year, month, inst) {
+                                                                                                    if (year == 1899 || year == 1900 || year == 0) {
+                                                                                                        $(this).datepicker('setDate', $(this).val());
+                                                                                                        var now = $(this).datepicker("getDate");
+
+                                                                                                        if (now == null) {
+                                                                                                            now = new Date();
+                                                                                                        }
+
+                                                                                                        if (year == 1899) // Clicked backward
+                                                                                                        {
+                                                                                                            now.setMonth(now.getMonth() - 1);
+                                                                                                        } else if (year == 1900) // Clicked forward
+                                                                                                        {
+                                                                                                            now.setMonth(now.getMonth() + 1);
+                                                                                                        } else if (year == 0) // Clicked a month
+                                                                                                        {
+                                                                                                            now.setMonth(month - 1);
+                                                                                                        }
+                                                                                                        $(this).datepicker('setDate', now);
+                                                                                                    }
+                                                                                                }
+                                                                                            });
+                                                                                        </script>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4459_0" class="question-label"></div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                        <div class="ls">
+                                                            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                <tbody>
+                                                                    <tr>
+
+                                                                        <td class="lccell" style="width:40%"></td>
+                                                                        <td class="lccell"></td>
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4539_0" class="question-label">End date</div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <label for="Q4540_0" class="sr-only">End date</label>
+
+                                                                                        <div class="input-group" style="width:200px">
+                                                                                            <input type="text" id="Q4540_0" name="Q4540_0" class="form-control hasDatepicker" value="" />
+                                                                                            <span class="input-group-btn">
+        <button class="btn btn-default" type="button" onclick="$('#Q4540_0').datepicker('show');" title="Select Date" id="Q4540_0_btn">
+            <img width="12" height="11" alt="Select Date" src="/Images/calendar2.gif"/>
+        </button>
+    </span>
+                                                                                        </div>
+
+                                                                                        <script type="text/javascript">
+                                                                                            $('#Q4540_0').datepicker({
+                                                                                                showOn: 'none',
+                                                                                                changeMonth: true,
+                                                                                                changeYear: true,
+                                                                                                nextText: '>',
+                                                                                                prevText: '<',
+                                                                                                dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                                                                                                dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                                                                                                monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', ''],
+                                                                                                dateFormat: 'd/mm/yy',
+                                                                                                isRTL: false,
+                                                                                                yearRange: 'c-100:c+100',
+                                                                                                constrainInput: false,
+                                                                                                onSelect: function(tsDate, troPicker) {
+                                                                                                    $('#Q4540_0').focus();
+                                                                                                },
+
+                                                                                                onChangeMonthYear: function(year, month, inst) {
+                                                                                                    if (year == 1899 || year == 1900 || year == 0) {
+                                                                                                        $(this).datepicker('setDate', $(this).val());
+                                                                                                        var now = $(this).datepicker("getDate");
+
+                                                                                                        if (now == null) {
+                                                                                                            now = new Date();
+                                                                                                        }
+
+                                                                                                        if (year == 1899) // Clicked backward
+                                                                                                        {
+                                                                                                            now.setMonth(now.getMonth() - 1);
+                                                                                                        } else if (year == 1900) // Clicked forward
+                                                                                                        {
+                                                                                                            now.setMonth(now.getMonth() + 1);
+                                                                                                        } else if (year == 0) // Clicked a month
+                                                                                                        {
+                                                                                                            now.setMonth(month - 1);
+                                                                                                        }
+                                                                                                        $(this).datepicker('setDate', now);
+                                                                                                    }
+                                                                                                }
+                                                                                            });
+                                                                                        </script>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4541_0" class="question-label"></div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                        <div class="ls">
+                                                            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                <tbody>
+                                                                    <tr>
+
+                                                                        <td class="lccell" style="width:40%"></td>
+                                                                        <td class="lccell"></td>
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4522_0" class="question-label">Employer Name</div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <label for="Q4523_0" class="sr-only">Employer name</label>
+
+                                                                                        <input type="text" id="Q4523_0" name="Q4523_0" value="" placeholder="" class="form-control" spellcheck="true" />
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4524_0" class="question-label"></div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                        <div class="ls">
+                                                            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                <tbody>
+                                                                    <tr>
+
+                                                                        <td class="lccell" style="width:40%"></td>
+                                                                        <td class="lccell"></td>
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4460_0" class="question-label">Street</div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <label for="Q4461_0" class="sr-only">Employer street</label>
+
+                                                                                        <input type="text" id="Q4461_0" name="Q4461_0" value="" placeholder="" class="form-control" spellcheck="true" />
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4462_0" class="question-label"></div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                        <div class="ls">
+                                                            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                <tbody>
+                                                                    <tr>
+
+                                                                        <td class="lccell" style="width:40%"></td>
+                                                                        <td class="lccell"></td>
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4463_0" class="question-label"></div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="ls">
+                                                                                    <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                                        <tbody>
+                                                                                            <tr>
+
+                                                                                                <td class="lccell" style="width:33%">
+                                                                                                    <div class="lch">Suburb</div>
+                                                                                                </td>
+                                                                                                <td class="lccell" style="width:33%">
+                                                                                                    <div class="lch">Town/City</div>
+                                                                                                </td>
+                                                                                                <td class="lccell" style="width:33%">
+                                                                                                    <div class="lch">Postcode</div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+
+                                                                                                <td class="lccell">
+                                                                                                    <div class="lc">
+
+                                                                                                        <div class="question-group">
+                                                                                                            <div class="question-body">
+
+                                                                                                                <label for="Q4464_0" class="sr-only">Employer Suburb</label>
+
+                                                                                                                <input type="text" id="Q4464_0" name="Q4464_0" value="" placeholder="" class="form-control" spellcheck="true" />
+
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="lccell">
+                                                                                                    <div class="lc">
+
+                                                                                                        <div class="question-group">
+                                                                                                            <div class="question-body">
+
+                                                                                                                <label for="Q4465_0" class="sr-only">Employer Town/City</label>
+
+                                                                                                                <input type="text" id="Q4465_0" name="Q4465_0" value="" placeholder="" class="form-control" spellcheck="true" />
+
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="lccell">
+                                                                                                    <div class="lc">
+
+                                                                                                        <div class="question-group">
+                                                                                                            <div class="question-body">
+
+                                                                                                                <label for="Q4466_0" class="sr-only">Employer Postcode</label>
+
+                                                                                                                <input type="text" id="Q4466_0" name="Q4466_0" value="" placeholder="" class="form-control" spellcheck="true" />
+
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4467_0" class="question-label"></div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                        <div class="ls">
+                                                            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                <tbody>
+                                                                    <tr>
+
+                                                                        <td class="lccell" style="width:40%"></td>
+                                                                        <td class="lccell"></td>
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4468_0" class="question-label">Role duties (%)</div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="ls">
+                                                                                    <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                                        <tbody>
+                                                                                            <tr>
+
+                                                                                                <td class="lccell" style="width:25%">
+                                                                                                    <div class="lch">Administrative %</div>
+                                                                                                </td>
+                                                                                                <td class="lccell" style="width:25%">
+                                                                                                    <div class="lch">Supervisory %</div>
+                                                                                                </td>
+                                                                                                <td class="lccell" style="width:25%">
+                                                                                                    <div class="lch">Manual %</div>
+                                                                                                </td>
+                                                                                                <td class="lccell" style="width:25%">
+                                                                                                    <div class="lch">Travel %</div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+
+                                                                                                <td class="lccell">
+                                                                                                    <div class="lc">
+
+                                                                                                        <div class="question-group">
+                                                                                                            <div class="question-body">
+
+                                                                                                                <label for="Q4469_0" class="sr-only">Administrative</label>
+
+                                                                                                                <input type="text" id="Q4469_0" name="Q4469_0" value="" placeholder="" class="form-control" pattern="\d*" style="width:50px" maxlength="29" />
+
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="lccell">
+                                                                                                    <div class="lc">
+
+                                                                                                        <div class="question-group">
+                                                                                                            <div class="question-body">
+
+                                                                                                                <label for="Q4470_0" class="sr-only">Supervisory</label>
+
+                                                                                                                <input type="text" id="Q4470_0" name="Q4470_0" value="" placeholder="" class="form-control" pattern="\d*" style="width:50px" maxlength="29" />
+
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="lccell">
+                                                                                                    <div class="lc">
+
+                                                                                                        <div class="question-group">
+                                                                                                            <div class="question-body">
+
+                                                                                                                <label for="Q4471_0" class="sr-only">Manual</label>
+
+                                                                                                                <input type="text" id="Q4471_0" name="Q4471_0" value="" placeholder="" class="form-control" pattern="\d*" style="width:50px" maxlength="29" />
+
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="lccell">
+                                                                                                    <div class="lc">
+
+                                                                                                        <div class="question-group">
+                                                                                                            <div class="question-body">
+
+                                                                                                                <label for="Q4472_0" class="sr-only">Travel</label>
+
+                                                                                                                <input type="text" id="Q4472_0" name="Q4472_0" value="" placeholder="" class="form-control" pattern="\d*" style="width:50px" maxlength="29" />
+
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4473_0" class="question-label"></div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="lsrepeat-spacer" data-index="0">
+                                                <td colspan="2"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="lscommand">
+                                        <input id="L071db270-522e-4424-8cf8-718d27183679_add" type="submit" class="add" data-command="/wizard/addSectionRow?id=c00187fb-c967-4ad5-95ca-96148aea0f14&amp;EmailTrackerID=2bfa85d5-8229-4ade-938c-e4ccee1ed418&amp;Portal=1&amp;prepared=true&amp;logGuid=1ce01d6c-83aa-4eea-9cc7-3df055daa02e&amp;_=1520033800429" data-fragmentguid="cb2339b9-7897-4459-85ad-5dc615deb3ae" data-objectid="071db270-522e-4424-8cf8-718d27183679" data-repeatpath="" title="Add" accesskey="A" value="" />
+                                        <input type="submit" class="delete" data-command="/wizard/deleteSectionRow?id=c00187fb-c967-4ad5-95ca-96148aea0f14&amp;EmailTrackerID=2bfa85d5-8229-4ade-938c-e4ccee1ed418&amp;Portal=1&amp;prepared=true&amp;logGuid=1ce01d6c-83aa-4eea-9cc7-3df055daa02e&amp;_=1520033800429" data-fragmentguid="cb2339b9-7897-4459-85ad-5dc615deb3ae" data-objectid="071db270-522e-4424-8cf8-718d27183679" data-repeatpath="" title="Delete" value="" />
+                                        <input id="L071db270-522e-4424-8cf8-718d27183679_filldown" type="submit" class="fillDown" data-command="/wizard/fillDown?id=c00187fb-c967-4ad5-95ca-96148aea0f14&amp;EmailTrackerID=2bfa85d5-8229-4ade-938c-e4ccee1ed418&amp;Portal=1&amp;prepared=true&amp;logGuid=1ce01d6c-83aa-4eea-9cc7-3df055daa02e&amp;_=1520033800429" data-fragmentguid="cb2339b9-7897-4459-85ad-5dc615deb3ae" data-objectid="071db270-522e-4424-8cf8-718d27183679" data-repeatpath="" title="Duplicate Last Row" accesskey="F" value="" /> &nbsp;
+
+                                    </div>
+                                </div>
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q4503" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td class="lccell">
+                            <div class="lc">
+
+                                <div class="ls lsrepeat ">
+                                    <div class="lsh">Add Employment Details Partner</div>
+                                    <div class="lsd">Please add the previous employment details if your current employment is less than 3 years.</div>
+                                    <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                        <thead>
+                                            <tr>
+                                                <td class="lccell lccellselect"></td>
+
+                                                <td class="lccell"></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="sortableRow ui-sortable" data-fragmentguid="cb2339b9-7897-4459-85ad-5dc615deb3ae" data-objectid="5bcc6e5b-5ea0-4555-927e-345b75ac493d" data-repeatpath="">
+
+                                            <tr data-index="0" class="lsrepeat-row">
+                                                <td class="touchable lccell lccellselect ui-sortable-handle">
+                                                    <div class="lc lcselect">
+                                                        <span class="MoveIcon MoveIconSection"><span class="sr-only">Move Row</span></span>
+                                                        <label class="sr-only" for="L5bcc6e5b-5ea0-4555-927e-345b75ac493dselectRow">Select Row</label>
+                                                        <input type="checkbox" name="L5bcc6e5b-5ea0-4555-927e-345b75ac493d_chkSelect" value="0" class="row-select" id="L5bcc6e5b-5ea0-4555-927e-345b75ac493dselectRow" />
+                                                    </div>
+                                                </td>
+                                                <td class="lccell">
+                                                    <div class="lc">
+
+                                                        <div class="ls">
+                                                            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                <tbody>
+                                                                    <tr>
+
+                                                                        <td class="lccell" style="width:40%"></td>
+                                                                        <td class="lccell"></td>
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4475_0" class="question-label">Employment status</div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <label id="Q4476_0Text" for="Q4476_0" class="sr-only">Employment status Mnl LA2</label>
+
+                                                                                        <select class="form-control" id="Q4476_0" name="Q4476_0">
+                                                                                            <option></option>
+                                                                                            <option value="12463">Full time</option>
+                                                                                            <option value="12464">Part time</option>
+                                                                                            <option value="12465">Casual</option>
+                                                                                            <option value="12466">Commission</option>
+                                                                                            <option value="12467">Contractor</option>
+                                                                                            <option value="12468">Home Duties</option>
+                                                                                            <option value="12469">Not Employed</option>
+                                                                                            <option value="12470">Retired</option>
+                                                                                            <option value="12471">Salary</option>
+                                                                                            <option value="12472">Self Employed</option>
+                                                                                            <option value="12473">Student</option>
+                                                                                            <option value="12474">Wages</option>
+                                                                                            <option value="12475">Other</option>
+                                                                                        </select>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4479_0" class="question-label"></div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                        <div class="ls">
+                                                            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                <tbody>
+                                                                    <tr>
+
+                                                                        <td class="lccell" style="width:40%"></td>
+                                                                        <td class="lccell"></td>
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4480_0" class="question-label">Job title</div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <label for="Q4481_0" class="sr-only">Job title</label>
+
+                                                                                        <input type="text" id="Q4481_0" name="Q4481_0" value="" placeholder="" class="form-control" spellcheck="true" style="width:250px" />
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4482_0" class="question-label"></div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                        <div class="ls">
+                                                            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                <tbody>
+                                                                    <tr>
+
+                                                                        <td class="lccell" style="width:40%"></td>
+                                                                        <td class="lccell"></td>
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4483_0" class="question-label">Start date</div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <label for="Q4484_0" class="sr-only">Start date</label>
+
+                                                                                        <div class="input-group" style="width:200px">
+                                                                                            <input type="text" id="Q4484_0" name="Q4484_0" class="form-control hasDatepicker" value="" />
+                                                                                            <span class="input-group-btn">
+        <button class="btn btn-default" type="button" onclick="$('#Q4484_0').datepicker('show');" title="Select Date" id="Q4484_0_btn">
+            <img width="12" height="11" alt="Select Date" src="/Images/calendar2.gif"/>
+        </button>
+    </span>
+                                                                                        </div>
+
+                                                                                        <script type="text/javascript">
+                                                                                            $('#Q4484_0').datepicker({
+                                                                                                showOn: 'none',
+                                                                                                changeMonth: true,
+                                                                                                changeYear: true,
+                                                                                                nextText: '>',
+                                                                                                prevText: '<',
+                                                                                                dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                                                                                                dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                                                                                                monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', ''],
+                                                                                                dateFormat: 'd/mm/yy',
+                                                                                                isRTL: false,
+                                                                                                yearRange: 'c-100:c+100',
+                                                                                                constrainInput: false,
+                                                                                                onSelect: function(tsDate, troPicker) {
+                                                                                                    $('#Q4484_0').focus();
+                                                                                                },
+
+                                                                                                onChangeMonthYear: function(year, month, inst) {
+                                                                                                    if (year == 1899 || year == 1900 || year == 0) {
+                                                                                                        $(this).datepicker('setDate', $(this).val());
+                                                                                                        var now = $(this).datepicker("getDate");
+
+                                                                                                        if (now == null) {
+                                                                                                            now = new Date();
+                                                                                                        }
+
+                                                                                                        if (year == 1899) // Clicked backward
+                                                                                                        {
+                                                                                                            now.setMonth(now.getMonth() - 1);
+                                                                                                        } else if (year == 1900) // Clicked forward
+                                                                                                        {
+                                                                                                            now.setMonth(now.getMonth() + 1);
+                                                                                                        } else if (year == 0) // Clicked a month
+                                                                                                        {
+                                                                                                            now.setMonth(month - 1);
+                                                                                                        }
+                                                                                                        $(this).datepicker('setDate', now);
+                                                                                                    }
+                                                                                                }
+                                                                                            });
+                                                                                        </script>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4485_0" class="question-label"></div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                        <div class="ls">
+                                                            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                <tbody>
+                                                                    <tr>
+
+                                                                        <td class="lccell" style="width:40%"></td>
+                                                                        <td class="lccell"></td>
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4542_0" class="question-label">End date</div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <label for="Q4543_0" class="sr-only">End date</label>
+
+                                                                                        <div class="input-group" style="width:200px">
+                                                                                            <input type="text" id="Q4543_0" name="Q4543_0" class="form-control hasDatepicker" value="" />
+                                                                                            <span class="input-group-btn">
+        <button class="btn btn-default" type="button" onclick="$('#Q4543_0').datepicker('show');" title="Select Date" id="Q4543_0_btn">
+            <img width="12" height="11" alt="Select Date" src="/Images/calendar2.gif"/>
+        </button>
+    </span>
+                                                                                        </div>
+
+                                                                                        <script type="text/javascript">
+                                                                                            $('#Q4543_0').datepicker({
+                                                                                                showOn: 'none',
+                                                                                                changeMonth: true,
+                                                                                                changeYear: true,
+                                                                                                nextText: '>',
+                                                                                                prevText: '<',
+                                                                                                dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                                                                                                dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                                                                                                monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', ''],
+                                                                                                dateFormat: 'd/mm/yy',
+                                                                                                isRTL: false,
+                                                                                                yearRange: 'c-100:c+100',
+                                                                                                constrainInput: false,
+                                                                                                onSelect: function(tsDate, troPicker) {
+                                                                                                    $('#Q4543_0').focus();
+                                                                                                },
+
+                                                                                                onChangeMonthYear: function(year, month, inst) {
+                                                                                                    if (year == 1899 || year == 1900 || year == 0) {
+                                                                                                        $(this).datepicker('setDate', $(this).val());
+                                                                                                        var now = $(this).datepicker("getDate");
+
+                                                                                                        if (now == null) {
+                                                                                                            now = new Date();
+                                                                                                        }
+
+                                                                                                        if (year == 1899) // Clicked backward
+                                                                                                        {
+                                                                                                            now.setMonth(now.getMonth() - 1);
+                                                                                                        } else if (year == 1900) // Clicked forward
+                                                                                                        {
+                                                                                                            now.setMonth(now.getMonth() + 1);
+                                                                                                        } else if (year == 0) // Clicked a month
+                                                                                                        {
+                                                                                                            now.setMonth(month - 1);
+                                                                                                        }
+                                                                                                        $(this).datepicker('setDate', now);
+                                                                                                    }
+                                                                                                }
+                                                                                            });
+                                                                                        </script>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4544_0" class="question-label"></div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                        <div class="ls">
+                                                            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                <tbody>
+                                                                    <tr>
+
+                                                                        <td class="lccell" style="width:40%"></td>
+                                                                        <td class="lccell"></td>
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4525_0" class="question-label">Employer Name</div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <label for="Q4526_0" class="sr-only">Employer name</label>
+
+                                                                                        <input type="text" id="Q4526_0" name="Q4526_0" value="" placeholder="" class="form-control" spellcheck="true" />
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4527_0" class="question-label"></div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                        <div class="ls">
+                                                            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                <tbody>
+                                                                    <tr>
+
+                                                                        <td class="lccell" style="width:40%"></td>
+                                                                        <td class="lccell"></td>
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4486_0" class="question-label">Street</div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <label for="Q4487_0" class="sr-only">Employer street</label>
+
+                                                                                        <input type="text" id="Q4487_0" name="Q4487_0" value="" placeholder="" class="form-control" spellcheck="true" />
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4488_0" class="question-label"></div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                        <div class="ls">
+                                                            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                <tbody>
+                                                                    <tr>
+
+                                                                        <td class="lccell" style="width:40%"></td>
+                                                                        <td class="lccell"></td>
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4489_0" class="question-label"></div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="ls">
+                                                                                    <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                                        <tbody>
+                                                                                            <tr>
+
+                                                                                                <td class="lccell" style="width:33%">
+                                                                                                    <div class="lch">Suburb</div>
+                                                                                                </td>
+                                                                                                <td class="lccell" style="width:33%">
+                                                                                                    <div class="lch">Town/City</div>
+                                                                                                </td>
+                                                                                                <td class="lccell" style="width:33%">
+                                                                                                    <div class="lch">Postcode</div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+
+                                                                                                <td class="lccell">
+                                                                                                    <div class="lc">
+
+                                                                                                        <div class="question-group">
+                                                                                                            <div class="question-body">
+
+                                                                                                                <label for="Q4490_0" class="sr-only">Employer Suburb</label>
+
+                                                                                                                <input type="text" id="Q4490_0" name="Q4490_0" value="" placeholder="" class="form-control" spellcheck="true" />
+
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="lccell">
+                                                                                                    <div class="lc">
+
+                                                                                                        <div class="question-group">
+                                                                                                            <div class="question-body">
+
+                                                                                                                <label for="Q4491_0" class="sr-only">Employer Town/City</label>
+
+                                                                                                                <input type="text" id="Q4491_0" name="Q4491_0" value="" placeholder="" class="form-control" spellcheck="true" />
+
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="lccell">
+                                                                                                    <div class="lc">
+
+                                                                                                        <div class="question-group">
+                                                                                                            <div class="question-body">
+
+                                                                                                                <label for="Q4492_0" class="sr-only">Employer Postcode</label>
+
+                                                                                                                <input type="text" id="Q4492_0" name="Q4492_0" value="" placeholder="" class="form-control" spellcheck="true" />
+
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4493_0" class="question-label"></div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                        <div class="ls">
+                                                            <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                <tbody>
+                                                                    <tr>
+
+                                                                        <td class="lccell" style="width:40%"></td>
+                                                                        <td class="lccell"></td>
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4494_0" class="question-label">Role duties (%)</div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="lccell">
+                                                                            <div class="lc">
+
+                                                                                <div class="ls">
+                                                                                    <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
+                                                                                        <tbody>
+                                                                                            <tr>
+
+                                                                                                <td class="lccell" style="width:25%">
+                                                                                                    <div class="lch">Administrative %</div>
+                                                                                                </td>
+                                                                                                <td class="lccell" style="width:25%">
+                                                                                                    <div class="lch">Supervisory %</div>
+                                                                                                </td>
+                                                                                                <td class="lccell" style="width:25%">
+                                                                                                    <div class="lch">Manual %</div>
+                                                                                                </td>
+                                                                                                <td class="lccell" style="width:25%">
+                                                                                                    <div class="lch">Travel %</div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+
+                                                                                                <td class="lccell">
+                                                                                                    <div class="lc">
+
+                                                                                                        <div class="question-group">
+                                                                                                            <div class="question-body">
+
+                                                                                                                <label for="Q4495_0" class="sr-only">Administrative</label>
+
+                                                                                                                <input type="text" id="Q4495_0" name="Q4495_0" value="" placeholder="" class="form-control" pattern="\d*" style="width:50px" maxlength="29" />
+
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="lccell">
+                                                                                                    <div class="lc">
+
+                                                                                                        <div class="question-group">
+                                                                                                            <div class="question-body">
+
+                                                                                                                <label for="Q4496_0" class="sr-only">Supervisory</label>
+
+                                                                                                                <input type="text" id="Q4496_0" name="Q4496_0" value="" placeholder="" class="form-control" pattern="\d*" style="width:50px" maxlength="29" />
+
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="lccell">
+                                                                                                    <div class="lc">
+
+                                                                                                        <div class="question-group">
+                                                                                                            <div class="question-body">
+
+                                                                                                                <label for="Q4497_0" class="sr-only">Manual</label>
+
+                                                                                                                <input type="text" id="Q4497_0" name="Q4497_0" value="" placeholder="" class="form-control" pattern="\d*" style="width:50px" maxlength="29" />
+
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="lccell">
+                                                                                                    <div class="lc">
+
+                                                                                                        <div class="question-group">
+                                                                                                            <div class="question-body">
+
+                                                                                                                <label for="Q4498_0" class="sr-only">Travel</label>
+
+                                                                                                                <input type="text" id="Q4498_0" name="Q4498_0" value="" placeholder="" class="form-control" pattern="\d*" style="width:50px" maxlength="29" />
+
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+
+                                                                                <div class="question-group">
+                                                                                    <div class="question-body">
+
+                                                                                        <div id="Q4499_0" class="question-label"></div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="lsrepeat-spacer" data-index="0">
+                                                <td colspan="2"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="lscommand">
+                                        <input id="L5bcc6e5b-5ea0-4555-927e-345b75ac493d_add" type="submit" class="add" data-command="/wizard/addSectionRow?id=c00187fb-c967-4ad5-95ca-96148aea0f14&amp;EmailTrackerID=2bfa85d5-8229-4ade-938c-e4ccee1ed418&amp;Portal=1&amp;prepared=true&amp;logGuid=1ce01d6c-83aa-4eea-9cc7-3df055daa02e&amp;_=1520033800429" data-fragmentguid="cb2339b9-7897-4459-85ad-5dc615deb3ae" data-objectid="5bcc6e5b-5ea0-4555-927e-345b75ac493d" data-repeatpath="" title="Add" accesskey="A" value="" />
+                                        <input type="submit" class="delete" data-command="/wizard/deleteSectionRow?id=c00187fb-c967-4ad5-95ca-96148aea0f14&amp;EmailTrackerID=2bfa85d5-8229-4ade-938c-e4ccee1ed418&amp;Portal=1&amp;prepared=true&amp;logGuid=1ce01d6c-83aa-4eea-9cc7-3df055daa02e&amp;_=1520033800429" data-fragmentguid="cb2339b9-7897-4459-85ad-5dc615deb3ae" data-objectid="5bcc6e5b-5ea0-4555-927e-345b75ac493d" data-repeatpath="" title="Delete" value="" />
+                                        <input id="L5bcc6e5b-5ea0-4555-927e-345b75ac493d_filldown" type="submit" class="fillDown" data-command="/wizard/fillDown?id=c00187fb-c967-4ad5-95ca-96148aea0f14&amp;EmailTrackerID=2bfa85d5-8229-4ade-938c-e4ccee1ed418&amp;Portal=1&amp;prepared=true&amp;logGuid=1ce01d6c-83aa-4eea-9cc7-3df055daa02e&amp;_=1520033800429" data-fragmentguid="cb2339b9-7897-4459-85ad-5dc615deb3ae" data-objectid="5bcc6e5b-5ea0-4555-927e-345b75ac493d" data-repeatpath="" title="Duplicate Last Row" accesskey="F" value="" /> &nbsp;
+
+                                    </div>
+                                </div>
+
+                                <div class="question-group">
+                                    <div class="question-body">
+
+                                        <div id="Q4504" class="question-label"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</apex:component>

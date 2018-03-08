@@ -1,0 +1,17 @@
+{
+    "projectName": "CloudInsure",
+    "username": "ramu.veligeti@cloudinsurenz.com",
+    "id": "e011d860-2264-11e8-b651-c5f81c979363",
+    "namespace": "",
+    "orgType": "developer",
+    "loginUrl": "https://login.salesforce.com/",
+    "instanceUrl": "https://cloudinsure-dev-ed.my.salesforce.com",
+    "workspace": "/Users/work/Documents/Workspace/",
+    "subscription": [
+        "ApexClass",
+        "ApexComponent",
+        "ApexPage",
+        "ApexTrigger",
+        "StaticResource"
+    ]
+}

@@ -1,0 +1,120 @@
+<apex:page standardController="Need_Analysis__c" showHeader="false" sidebar="false">
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"/>
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"/>
+    <apex:includeScript value="{!$Resource.BootStrapDatepicker}"/>
+    <style>
+        a.mover { background-color: #FBE863; color: #957D31; padding: 6px 12px; position: absolute; font-weight: bold; text-decoration: none; }
+        .next-tab { border-left: 5px solid #fff; border-bottom: 5px solid #fff; top: 250px; right: 0;}
+        .prev-tab { border-right: 5px solid #fff; border-bottom: 5px solid #fff; top: 250px; left: 0;}
+    </style>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('.sr-only').hide();
+        $('.datepicker').datepicker();
+        $(function() {
+            /*var $tabs = $('#tabs').tabs({
+                disabled: [0, 1, 2]
+            });
+            
+            /*$(".ui-tabs-panel").each(function(i) {
+                
+                var totalSize = $(".ui-tabs-panel").size() - 1;
+                
+                if (i != totalSize) {
+                    next = i + 2;
+                    //$(this).append("<a href='#' class='next-tab mover' rel='" + next + "'>Next Page &#187;</a>");
+                }
+                
+                if (i != 0) {
+                    prev = i;
+                    //$(this).append("<a href='#' class='prev-tab mover' rel='" + prev + "'>&#171; Prev Page</a>");
+                }
+                
+            });*/
+            
+            $('.slds-tabs_scoped__item').click(function() {
+                
+                $(".slds-tabs_scoped__item").each(function(i,tab) {
+                    //console.log(i);
+                    //console.log(tab);
+                    
+                    $(tab).removeClass('slds-is-active');
+                });
+                $(this).addClass('slds-is-active');
+                var tabIndex = $(this).attr("rel");
+                console.log(tabIndex);
+                $(".slds-tabs_scoped__content").each(function(j,d){
+                    //console.log(j);
+                    
+                    $(d).removeClass('slds-show');
+                    $(d).addClass('slds-hide');
+                	if(j==tabIndex){
+                        console.log($(d).attr('id'));
+                    	$(d).addClass('slds-show');
+                        $(d).removeClass('slds-hide');
+                    }
+                });
+                /*$tabs.tabs('enable', tabIndex)
+                .tabs('select', tabIndex)
+                .tabs("option","disabled", [0, 1, 2]);
+                return false;*/
+            });
+            
+            
+        });
+        
+    });
+    </script>
+    <apex:slds />
+    <apex:form >
+        <div id="tabs" class="slds-tabs_scoped">
+            <ul class="slds-tabs_scoped__nav" role="tablist">
+                <li id="pdTab" class="slds-tabs_scoped__item slds-is-active" rel="0" title="Personal Details" role="presentation" onclick=""><a class="slds-tabs_scoped__link" href="#tabs-1" role="tab" tabindex="-1" aria-selected="true" aria-controls="tab-scoped-1" id="tab-scoped-1__item">Personal Details</a></li>
+                <li id="dpTab" class="slds-tabs_scoped__item " title="Dependents" rel="1" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-2" role="tab" tabindex="0" aria-selected="false" aria-controls="tab-scoped-2" id="tab-scoped-2__item">Dependents</a></li>
+                <li id="fiTab" class="slds-tabs_scoped__item" title="Employment Details" rel="2" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">Employment Details</a></li>
+                <li id="fiTab" class="slds-tabs_scoped__item" title="Income" rel="2" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">Income</a></li>
+                <li id="fiTab" class="slds-tabs_scoped__item" title="Expenses" rel="2" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">Expenses</a></li>
+                <li id="fiTab" class="slds-tabs_scoped__item" title="Assets" rel="2" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">Assets</a></li>
+                <li id="fiTab" class="slds-tabs_scoped__item" title="Liabilities" rel="2" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">Liabilities</a></li>
+                <li id="fiTab" class="slds-tabs_scoped__item" title="Existing Risk Insurance" rel="2" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">Existing Risk Insurance</a></li>
+                <li id="fiTab" class="slds-tabs_scoped__item" title="Estate Planning" rel="2" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">Estate Planning</a></li>
+                <li id="fiTab" class="slds-tabs_scoped__item" title="Existing Professional Contact" rel="2" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">Existing Professional Contact</a></li>
+                <li id="fiTab" class="slds-tabs_scoped__item" title="Final Checks - Client" rel="2" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">Final Checks - Client</a></li>
+            </ul>
+            <div id="tabs-1" class="slds-tabs_scoped__content slds-show" role="tabpanel" aria-labelledby="tab-scoped-1__item">
+                <c:PersonalDetails needAnalysis="{!Need_Analysis__c}"></c:PersonalDetails>
+            </div>
+            <div id="tabs-2" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-2__item">
+                <c:Dependents ></c:Dependents>
+            </div>
+            <div id="tabs-3" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-3__item">
+                <c:EmploymentDetails ></c:EmploymentDetails>
+            </div>
+            <div id="tabs-4" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-4__item">
+                <c:EmploymentDetails ></c:EmploymentDetails>
+            </div>
+            <div id="tabs-5" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-5__item">
+                <c:EmploymentDetails ></c:EmploymentDetails>
+            </div>
+            <div id="tabs-6" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-6__item">
+                <c:EmploymentDetails ></c:EmploymentDetails>
+            </div>
+            <div id="tabs-7" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-7__item">
+                <c:EmploymentDetails ></c:EmploymentDetails>
+            </div>
+            <div id="tabs-8" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-8__item">
+                <c:EmploymentDetails ></c:EmploymentDetails>
+            </div>
+            <div id="tabs-9" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-9__item">
+                <c:EmploymentDetails ></c:EmploymentDetails>
+            </div>
+            <div id="tabs-10" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-10__item">
+                <c:EmploymentDetails ></c:EmploymentDetails>
+            </div>
+            <div id="tabs-11" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-11__item">
+                <c:EmploymentDetails ></c:EmploymentDetails>
+            </div>
+        </div>
+        
+    </apex:form>    
+</apex:page>

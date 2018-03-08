@@ -1,0 +1,36 @@
+[
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v36.0/tooling/sobjects/AuraDefinition/0Ad7F000000tPcVSAU"
+        },
+        "Id": "0Ad7F000000tPcVSAU",
+        "AuraDefinitionBundleId": "0Ab7F000000ZQ5RSAW",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v36.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000ZQ5RSAW"
+            },
+            "DeveloperName": "NeedAnalysis"
+        },
+        "DefType": "COMPONENT",
+        "Format": "XML"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v36.0/tooling/sobjects/AuraDefinition/0Ad7F000000tPcaSAE"
+        },
+        "Id": "0Ad7F000000tPcaSAE",
+        "AuraDefinitionBundleId": "0Ab7F000000ZQ5WSAW",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v36.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000ZQ5WSAW"
+            },
+            "DeveloperName": "NeedAnalysisApp"
+        },
+        "DefType": "APPLICATION",
+        "Format": "XML"
+    }
+]

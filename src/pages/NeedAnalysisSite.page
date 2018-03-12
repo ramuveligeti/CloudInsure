@@ -6,6 +6,10 @@
         a.mover { background-color: #FBE863; color: #957D31; padding: 6px 12px; position: absolute; font-weight: bold; text-decoration: none; }
         .next-tab { border-left: 5px solid #fff; border-bottom: 5px solid #fff; top: 250px; right: 0;}
         .prev-tab { border-right: 5px solid #fff; border-bottom: 5px solid #fff; top: 250px; left: 0;}
+        .ls{margin-top: 10px;}
+        tr.spaceUnder>td {
+        padding-bottom: 1em;
+        }
     </style>
     <script type="text/javascript">
     $(document).ready(function() {
@@ -85,7 +89,7 @@
                 <c:PersonalDetails needAnalysis="{!Need_Analysis__c}"></c:PersonalDetails>
             </div>
             <div id="tabs-2" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-2__item">
-                <c:Dependents ></c:Dependents>
+                <c:Dependents needAnalysis="{!Need_Analysis__c}"></c:Dependents>
             </div>
             <div id="tabs-3" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-3__item">
                 <c:EmploymentDetails ></c:EmploymentDetails>
@@ -115,6 +119,7 @@
                 <c:EmploymentDetails ></c:EmploymentDetails>
             </div>
         </div>
-        
+        <apex:commandButton value="Save" action="{!Save}"></apex:commandButton>
+       
     </apex:form>    
 </apex:page>

@@ -9,6 +9,8 @@
             </apex:pageBlockSectionItem>
         </apex:pageBlockSection>
     </apex:pageBlock-->
+    <style>
+    </style>
 
     <head>
 
@@ -93,7 +95,6 @@
                     </tbody>
                 </table>
             </div>
-
             <div class="ls">
                 <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
                     <tbody>

@@ -1,4 +1,4 @@
-<apex:component >
+<apex:component controller="NeedAnalysisController" allowDML="true">
     <apex:attribute name="needAnalysis" type="Need_Analysis__c" description="Need Analysis object"/>
     <!--apex:slds />
     <apex:pageBlock >
@@ -743,7 +743,7 @@
                                     <div class="question-group">
                                         <div class="question-body">
                                             <label for="Q1358" class="sr-only">Postal Address</label>
-                                            <apex:inputField value="{!needAnalysis.Postal_Address_C1__c}"/>
+                                            <apex:inputField value="{!needAnalysis.Postal_address_C1__c}"/>
                                         </div>
                                     </div>
 
@@ -809,7 +809,7 @@
                                     <div class="question-group">
                                         <div class="question-body">
                                             <label for="Q1359" class="sr-only">Postal Address</label>
-                                            <apex:inputField value="{!needAnalysis.Postal_Address_C2__c}"/>
+                                            <apex:inputField value="{!needAnalysis.Postal_address_C2__c}"/>
                                         </div>
                                     </div>
 
@@ -1015,7 +1015,7 @@
                                 <div class="lc">
                                     <div class="question-group">
                                         <div class="question-body">
-                                            <apex:inputField value="{!needAnalysis.Home_Phone_C1__c}"/>
+                                            <apex:inputField value="{!needAnalysis.Home_phone_C1__c}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -1024,7 +1024,7 @@
                                 <div class="lc">
                                     <div class="question-group">
                                         <div class="question-body">
-                                            <apex:inputField value="{!needAnalysis.Home_Phone_C2__c}"/>
+                                            <apex:inputField value="{!needAnalysis.Home_phone_C2__c}"/>
                                         </div>
                                     </div>
                                     <div class="question-group">
@@ -1107,7 +1107,7 @@
                                 <div class="lc">
                                     <div class="question-group">
                                         <div class="question-body">
-                                            <apex:inputField value="{!needAnalysis.Mobile_Phone_C1__c}"/>
+                                            <apex:inputField value="{!needAnalysis.Mobile_phone_C1__c}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -1116,7 +1116,7 @@
                                 <div class="lc">
                                     <div class="question-group">
                                         <div class="question-body">
-                                            <apex:inputField value="{!needAnalysis.Mobile_Phone_C2__c}"/>
+                                            <apex:inputField value="{!needAnalysis.Mobile_phone_C2__c}"/>
                                         </div>
                                     </div>
                                     <div class="question-group">
@@ -1266,8 +1266,27 @@
         </div>
         <div class="cell-footer" style="text-align: center">
             <div class="fr">
-                <apex:commandButton value="Save" action="{!Save}"></apex:commandButton>
+                <apex:commandButton value="Save" onclick="reratedependentstuff('{!needAnalysis.Surname_C1__c}'); return false;"></apex:commandButton>
             </div>
         </div>
     </div>
+    <script>
+        function reratedependentstuff(needAnalysis){
+            console.log('In need analysis');
+            console.log(needAnalysis);
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.NeedAnalysisController.updatePersonalDetails}','{!needAnalysis}',
+                function(result, event){
+                    if (event.status) {
+                        console.log(result);
+                    } else if (event.type === 'exception') {
+                        
+                    } else {
+                        
+                    }
+                }, 
+                {escape: true}
+            );
+        }
+    </script>
 </apex:component>

@@ -1,0 +1,254 @@
+<apex:component controller="NeedAnalysisController" allowDML="true"  >
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"/>
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"/>
+    <apex:attribute name="needAnalysis" type="Need_Analysis__c" description="Need Analysis object"/>
+    <script>
+        function Need_Analysis__c(){
+            this.Title_Client_1__c = $('input[id$=Title_Client_1__c]').val();
+            this.Title_Client_2__c = $('input[id$=Title_Client_2__c]').val();
+            this.Surname_C1__c = $('#Surname_C1__c').val();
+            this.Surname_C2__c = $('#Surname_C2__c').val();
+            this.First_Name_C1__c = $('#First_Name_C1__c').val();
+            this.First_Name_C2__c = $('#First_Name_C2__c').val();
+            this.Middle_Name_C1__c = $('#Middle_Name_C1__c').val();
+            this.Middle_Name_C2__c = $('#Middle_Name_C2__c').val();
+            if($('#DOB_C1__c').val() != null && $('#DOB_C1__c').val() != ''){
+                this.DOB_C1__c = $('#DOB_C1__c').val();
+            }
+            if($('#DOB_C2__c').val() != null && $('#DOB_C2__c').val() != ''){
+                this.DOB_C2__c = $('#DOB_C2__c').val();
+            }
+            this.Gender_C1__c = $('select[id$=Gender_C1__c]').val();
+            this.Gender_C2__c = $('select[id$=Gender_C2__c]').val();
+            this.Smoker_C1__c = $('select[id$=Smoker_C1__c]').val();
+            this.Smoker_C2__c = $('select[id$=Smoker_C2__c]').val();
+            this.Marital_Status_C1__c = $('select[id$=Marital_Status_C1__c]').val();
+            this.Marital_Status_C2__c = $('select[id$=Marital_Status_C2__c]').val();
+            this.Residency_Status_C1__c = $('select[id$=Residency_Status_C1__c]').val();
+            this.Residency_Status_C2__c = $('select[id$=Residency_Status_C2__c]').val();
+            this.Housing_Status_C1__c = $('select[id$=Housing_Status_C1__c]').val();
+            this.Housing_Status_C2__c = $('select[id$=Housing_Status_C2__c]').val();
+            this.Residential_Address_C1__c = $('textarea[id$=Residential_Address_C1__c]').val();
+            this.Residential_Address_C2__c = $('textarea[id$=Residential_Address_C2__c]').val();
+            this.Postal_Address_C1__c = $('textarea[id$=Postal_Address_C1__c]').val();
+            this.Postal_Address_C2__c = $('textarea[id$=Postal_Address_C2__c]').val();
+            this.Preferred_Contact_C1__c = $('select[id$=Preferred_Contact_C1__c]').val();
+            this.Preferred_Contact_C2__c = $('select[id$=Preferred_Contact_C2__c]').val();
+            this.Preferred_Contact_Email_C1__c = $('select[id$=Preferred_Contact_Email_C1__c]').val();
+            this.Preferred_Contact_Email_C2__c = $('select[id$=Preferred_Contact_Email_C2__c]').val();
+            this.Home_Phone_C1__c = $('input[id$=Home_Phone_C1__c]').val();
+            this.Home_Phone_C2__c = $('input[id$=Home_Phone_C2__c]').val();
+            this.Work_phone_C1__c = $('input[id$=Work_phone_C1__c]').val();
+            this.Work_phone_C2__c = $('input[id$=Work_phone_C2__c]').val();
+            this.Mobile_Phone_C1__c = $('input[id$=Mobile_Phone_C1__c]').val();
+            this.Mobile_Phone_C2__c = $('input[id$=Mobile_Phone_C2__c]').val();
+            this.Email_address_C1__c = $('input[id$=Email_address_C1__c]').val();
+            this.Email_address_C2__c = $('input[id$=Email_address_C2__c]').val();
+            this.Business_Email_C1__c = $('input[id$=Business_Email_C1__c]').val();
+            this.Business_Email_C2__c = $('input[id$=Business_Email_C2__c]').val();
+        }
+
+        function insertNewNeedAnalysis(){
+            var needAnalysis = new Need_Analysis__c();
+            /*var naString = JSON.stringify(needAnalysis);
+            naString = naString.replace(/\"([^(\")"]+)\":/g,"$1:");
+            naString = naString.substring(1,naString.length-1);
+            console.log(naString);*/
+            var newNa = new sObject('Need_Analysis__c',needAnalysis);
+            console.log(newNa);
+            newNa.insert(function(result,event){
+                if(event.status){
+                    console.log(result[0].id);
+                    $('#needAnalysisId').val(result[0].id);
+                }
+            });
+        }
+
+        /*function updateNeedAnalysis(){
+            var needAnalysis = new Need_Analysis__c();
+            needAnalysis = needAnalysis.replace(/\"([^(\")"]+)\":/g,"$1:");
+            console.log(JSON.stringify(needAnalysis));
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.NeedAnalysisController.updatePersonalDetails}',JSON.stringify(needAnalysis),
+                function(result, event){
+                    if (event.status) {
+                        console.log(result);
+                        $('#needAnalysisId').val(result);
+                    } else if (event.type === 'exception') {
+                        
+                    } else {
+                        
+                    }
+                }, 
+                {escape: true}
+            );
+        }*/
+    </script>
+    <apex:pageBlock >
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Save" onclick="insertNewNeedAnalysis(); return false;"></apex:commandButton>
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection columns="3" showHeader="false">
+            <apex:outputLabel >Title</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField value="{!needAnalysis.Title_Client_1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField value="{!needAnalysis.Title_Client_2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Surname</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <input id="Surname_C1__c" type="text"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <input id="Surname_C2__c" type="text"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >First Name</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <input id="First_Name_C1__c" type="text"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <input id="First_Name_C2__c" type="text"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Middle Name</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <input id="Middle_Name_C1__c" type="text"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <input id="Middle_Name_C2__c" type="text"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Preferred Name</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <input id="Preferred_Name_C1__c" type="text"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <input id="Preferred_Name_C2__c" type="text"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Date of Birth (dd/mm/yyyy)</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <input id="DOB_C1__c" type="date"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <input id="DOB_C2__c" type="date"/>
+            </apex:pageBlockSectionItem>
+            
+            <apex:outputLabel >Gender</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Gender_C1__c" value="{!needAnalysis.Gender_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Gender_C2__c" value="{!needAnalysis.Gender_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Are you a smoker?</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Smoker_C1__c" value="{!needAnalysis.Smoker_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Smoker_C2__c" value="{!needAnalysis.Smoker_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Marital Status</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Marital_Status_C1__c" value="{!needAnalysis.Marital_Status_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Marital_Status_C2__c" value="{!needAnalysis.Marital_Status_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Resident Status</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Residency_Status_C1__c" value="{!needAnalysis.Residency_Status_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Residency_Status_C2__c" value="{!needAnalysis.Residency_Status_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Housing Status</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Housing_Status_C1__c" value="{!needAnalysis.Housing_Status_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Housing_Status_C2__c" value="{!needAnalysis.Housing_Status_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Residental Address</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Residential_Address_C1__c" value="{!needAnalysis.Residential_Address_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Residential_Address_C2__c" value="{!needAnalysis.Residential_Address_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Postal Address</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Postal_Address_C1__c" value="{!needAnalysis.Postal_address_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Postal_Address_C2__c" value="{!needAnalysis.Postal_address_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Preferred Contact Method (Call)</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Preferred_Contact_C1__c" value="{!needAnalysis.Preferred_Contact_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Preferred_Contact_C2__c" value="{!needAnalysis.Preferred_Contact_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Preferred Contact Method (Email)</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Preferred_Contact_Email_C1__c" value="{!needAnalysis.Preferred_Contact_Email_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Preferred_Contact_Email_C2__c" value="{!needAnalysis.Preferred_Contact_Email_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Home Telephone No</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Home_Phone_C1__c" value="{!needAnalysis.Home_phone_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Home_Phone_C2__c" value="{!needAnalysis.Home_phone_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Business Telephone No</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Work_phone_C1__c" value="{!needAnalysis.Work_phone_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Work_phone_C2__c" value="{!needAnalysis.Work_phone_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Mobile</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Mobile_Phone_C1__c" value="{!needAnalysis.Mobile_phone_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Mobile_Phone_C2__c" value="{!needAnalysis.Mobile_phone_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Home Email</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Email_address_C1__c" value="{!needAnalysis.Email_address_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Email_address_C2__c" value="{!needAnalysis.Email_address_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Business Email</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Business_Email_C1__c" value="{!needAnalysis.Business_Email_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Business_Email_C2__c" value="{!needAnalysis.Business_Email_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:component>

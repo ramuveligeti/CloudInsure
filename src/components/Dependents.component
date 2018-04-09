@@ -1,4 +1,4 @@
-<apex:component >
+<apex:component controller="NeedAnalysisController" allowDML="true">
     <apex:attribute name="needAnalysis" type="Need_Analysis__c" description="Need Analysis object"/>
     <apex:attribute id="dependentAttr" name="dependent" type="Dependent__c" description="Dependent object"/>
     <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"/>
@@ -9,68 +9,190 @@
     <script type="text/javascript">
         var uuid = 1;
         function initiate(){
-            //$("[id$=dependentAttr]").val(dependents);
+            var naId = $('#needAnalysisId').val();
+            $("select[id*=relTo]").empty();
+            $("select[id*=relTo]").append(new Option('--None--',''));
+            sObject.query('select Id, First_Name_C1__c,First_Name_C2__c,Surname_C1__c,Surname_C2__c from Need_Analysis__c where Id = \''+naId+'\' limit 1',{escape:false},function(nas,event){
+                var naObj = nas[0];
+                if(naObj.First_Name_C1__c != null && naObj.First_Name_C1__c != '' && naObj.Surname_C1__c != null && naObj.Surname_C1__c != ''){
+                    $("select[id*=relTo]").append(new Option(naObj.First_Name_C1__c+' '+naObj.Surname_C1__c, naObj.First_Name_C1__c+' '+naObj.Surname_C1__c));
+                }
+                if(naObj.First_Name_C2__c != null && naObj.First_Name_C2__c != '' && naObj.Surname_C2__c != null && naObj.Surname_C2__c != ''){
+                    $("select[id*=relTo]").append(new Option(naObj.First_Name_C2__c+' '+naObj.Surname_C2__c, naObj.First_Name_C2__c+' '+naObj.Surname_C2__c));
+                }
+            });
+        }
+
+        function Dependent__c(){
+            /*var $row = $(row),            
+                $checked = $row.find('input[id*="check"]'),
+                $firstName = $row.find('input[id*="firstName"]'),
+                $surname = $row.find('input[id*="surname"]'),
+                $relation = $row.find('input[id*="relation"]'),
+                $relatedTo = $row.find('input[id*="relatedTo"]'),
+                $dob = $row.find('input[id*="dob"]'),
+                $financial = $row.find('input[id*="financial"]'),
+                $gender = $row.find('input[id*="gender"]'),
+                $age = $row.find('input[id*="age"]'),
+                $health = $row.find('input[id*="health"]'),
+                $pob = $row.find('input[id*="pob"]');*/
+
+            this.First_Name__c = null;
+            this.Surname__c = null;
+            this.Relation__c = null;
+            this.First_Name__c = null;
+            this.Date_of_Birth__c = null;
+            this.Financial_Dependant__c = null;
+            this.Gender__c = null;
+            this.Dependant_until_age__c = null;
+            this.Health_conditions__c = null;
+            this.Place_of_Birth__c = null;
+            this.RowNum__c = null;
         }
 
         function save(){
             var dependents = [];
             $("#mytable tr.spaceUnder").each(function (i, row) {
-                console.log(row);
-                var $row = $(row),
-                    $checked = $row.find('input[id*="check"]'),
-                    $firstName = $row.find('input[id*="firstName"]'),
-                    $surname = $row.find('input[id*="surname"]'),
-                    $relation = $row.find('input[id*="relation"]'),
-                    $relatedTo = $row.find('input[id*="relatedTo"]'),
-                    $dob = $row.find('input[id*="dob"]'),
-                    $financial = $row.find('input[id*="financial"]'),
-                    $gender = $row.find('input[id*="gender"]'),
-                    $age = $row.find('input[id*="age"]'),
-                    $health = $row.find('input[id*="health"]'),
-                    $pob = $row.find('input[id*="pob"]');
+                if(i>0){
+                    console.log(row);
+                    //var dependent = Dependent__c(row);
+                    //console.log(dependent);
+                    var $row = $(row),
+                        $checked = $row.find('input[id*="check"]'),
+                        $firstName = $row.find('input[id*="firstName"]'),
+                        $surname = $row.find('input[id*="surname"]'),
+                        $relation = $row.find('select[id*="relation"]'),
+                        $relatedTo = $row.find('select[id*="relatedTo"]'),
+                        $dob = $row.find('input[id*="dob"]'),
+                        $financial = $row.find('select[id*="financial"]'),
+                        $gender = $row.find('select[id*="gender"]'),
+                        $age = $row.find('input[id*="age"]'),
+                        $health = $row.find('input[id*="health"]'),
+                        $pob = $row.find('input[id*="pob"]'),
+                        $rNum = $row.find('input[id*="rowNum"]'),
+                        $rId = $row.find('input[id*="rowId"]');
 
-                var dependent = new sforce.SObject("Dependent__c");
-                dependent.First_Name__c = $firstName.val();
-                dependent.Surname__c = $surname.val();
-                dependent.Relation__c = $relation.val();
-                dependent.First_Name__c = $relatedTo.val();
-                dependent.Date_of_Birth__c = $dob.val();
-                dependent.Financial_Dependant__c = $financial.val();
-                dependent.Gender__c = $gender.val();
-                dependent.Dependant_until_age__c = $age.val();
-                dependent.Health_conditions__c = $health.val();
-                dependent.Place_of_Birth__c = $pob.val();
-                //console.log($("[id$=dependentAttr]").val());
-
-                dependents.push(dependent);
-                console.log(dependents);
+                    var dependent = new Dependent__c();
+                    dependent.First_Name__c = $firstName.val();
+                    dependent.Surname__c = $surname.val();
+                    dependent.Relation__c = $relation.val();
+                    dependent.Related_To__c = $relatedTo.val();
+                    dependent.Date_of_Birth__c = $dob.val();
+                    dependent.Financial_Dependant__c = $financial.val();
+                    dependent.Gender__c = $gender.val();
+                    dependent.Dependant_until_age__c = $age.val();
+                    dependent.Health_conditions__c = $health.val();
+                    dependent.Place_of_Birth__c = $pob.val();
+                    dependent.Need_Analysis__c = $('#needAnalysisId').val();
+                    dependent.RowNum__c = $rNum.val();
+                    if($rId.val() != ''){
+                        dependent.Id = $rId.val();
+                    }
+                    //console.log($("[id$=dependentAttr]").val());*/
+                    //var newDep = new sObject('Dependent__c',dependent);
+                    dependents.push(dependent);
+                    console.log(dependents);
+                }
             });
-            var result = sforce.connection.create(dependents);
-            console.log(result);
+            createDependents(dependents);
+        }
+
+        function createDependents(dependents){
+            //var newDep = new sObject('Dependent__c',dependents);
+            /*sObject.insert(dependents,{"optAllOrNone": "false"},function(results,event){
+                console.log(results);
+            });
+            newDeps.insert(function(result,event){
+                if(event.status){
+                    console.log(result);
+                    //$('#needAnalysisId').val(result[0].id);
+                }
+            });*/
+            console.log('srint');
+            console.log(JSON.stringify(dependents));
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.NeedAnalysisController.createDependents}',$('#needAnalysisId').val(),JSON.stringify(dependents),
+                function(result, event){
+                    if (event.status) {
+                        console.log(result);
+                        for(i=0;i<=result.length;i++){
+                            $("#mytable tr.spaceUnder").each(function (j, row) {
+                                if(j>0){
+                                    var $row = $(row),
+                                        $rId = $row.find('input[id*="rowId"]'),
+                                        $rNum = $row.find('input[id*="rowNum"]');
+                                    console.log(result[i]);
+                                    if(result[i] != undefined && $rNum.val() == result[i].RowNum__c){
+                                        console.log('in assign');
+                                        $rId.val(result[i].Id);
+                                    }
+                                }
+                            });
+                        }
+                    } else if (event.type === 'exception') {
+                        
+                    } else {
+                        
+                    }
+                }, 
+                {escape: true}
+            );
         }
 
         function deleteRow(){
+            var delIds = [];
+            $("#mytable tr.spaceUnder").each(function(i,row){
+                if(i > 0){
+                    var $row = $(row),
+                        $rId = $row.find('input[id*="rowId"]'),
+                        $checked = $row.find('input[id*="check"]');
+                    console.log($checked.val());
+                    if($checked.val()== 'on'){
+                        delIds.push($rId.val());
+                    }
+                }
+            });
+            console.log(delIds);
             $("#mytable tr.spaceUnder input[type='checkbox']:checked").parent().parent().remove();
-        }
+
+            if(delIds.length > 0){
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.NeedAnalysisController.deleteDependents}',delIds,
+                    function(result, event){
+                        if (event.status) {
+                            console.log(result);
+                        } else if (event.type === 'exception') {
+                            
+                        } else {
+                            
+                        }
+                    }, 
+                    {escape: true}
+                );
+            }
+       }
 
 
         function insertRow() {
             console.log('in');
             $("#mytable").each(function (i) {
-                var tds = '<tr class="spaceUnder" id="dp'+(++uuid)+'">';
-                var dependent = new sforce.SObject("Dependent__c");
+                var uId = ++uuid;
+                var tds = '<tr class="spaceUnder" id="dp'+(uId)+'">';
+                //var dependent = new sforce.sObject("Dependent__c");
                 //console.log($("[id$=dependentAttr]").val());
                 tds += '<td><input id="check" type="checkbox"/></td>';
                 tds += '<td><input id="firstName" type="text"/></td>';
                 tds += '<td><input id="surname" type="text"/></td>';
-                tds += '<td><input id="relation" type="text"/></td>';
-                tds += '<td><input id="relatedTo" type="text"/></td>';
-                tds += '<td><input id="dob" type="text"/></td>';
-                tds += '<td><input id="financial" type="text"/></td>';
-                tds += '<td><input id="gender" type="text"/></td>';
+                tds += '<td><select id="relation'+uId+'"></select></td>';
+                tds += '<td><select id="relatedTo'+uId+'" /></td>';
+                tds += '<td><input id="dob'+uId+'" type="date"/></td>';
+                tds += '<td><select id="financial'+uId+'"></select></td>';
+                tds += '<td><select id="gender'+uId+'"></select></td>';
                 tds += '<td><input id="age" type="text"/></td>';
                 tds += '<td><input id="health" type="text"/></td>';
                 tds += '<td><input id="pob" type="text"/></td>';
+                tds += '<td><input id="rowNum" type="hidden" value="'+uId+'"/></td>';
+                tds += '<td><input id="rowId" type="hidden"/></td>';
                     //tds += '<td>' + $(this).html() + '</td>';
                 tds += '</tr>';
                 if ($('tbody', this).length > 0) {
@@ -78,9 +200,18 @@
                 } else {
                     $(this).append(tds);
                 }
+                $('select[id$=rel] option').clone().appendTo('#relation'+uId);
+                $('select[id$=fd] option').clone().appendTo('#financial'+uId);
+                $('select[id$=ge] option').clone().appendTo('#gender'+uId);
+                $('select[id$=relTo] option').clone().appendTo('#relatedTo'+uId);
             });
         }
+
     </script>
+    <!--select id="relTo" style="display:none;"/-->
+    <apex:inputField id="rel" value="{!dependent.Relation__c}" style="display:none;"></apex:inputField>
+    <apex:inputField id="fd" value="{!dependent.Financial_Dependant__c}" style="display:none;"></apex:inputField>
+    <apex:inputField id="ge" value="{!dependent.Gender__c}" style="display:none;"></apex:inputField>
     <div id="PageBody">
         <div class="question-group">
             <div class="question-body">
@@ -120,14 +251,24 @@
                                         </div>
                                         <div class="radio-inline">
                                             <label>
-                                                <input type="radio" id="Q271-A367" name="Q271" value="367" checked="checked" onclick="wiz.reload()" aria-describedby="Q271Text" /> Yes
+                                                <input type="radio" id="Q271-A367" name="Q271" value="367" aria-describedby="Q271Text" /> Yes
                                             </label>
                                         </div>
                                         <div class="radio-inline">
                                             <label>
-                                                <input type="radio" id="Q271-A368" name="Q271" value="368" onclick="wiz.reload()" aria-describedby="Q271Text" /> No
+                                                <input type="radio" id="Q271-A368" name="Q271" value="368" aria-describedby="Q271Text" /> No
                                             </label>
                                         </div>
+                                        <script>
+                                            $("input[name='Q271']").change(function(){
+                                                if($(this).val() == '367'){
+                                                    $('#addDeps').show();
+                                                    initiate();
+                                                }else{
+                                                    $('#addDeps').hide();
+                                                }
+                                            });
+                                        </script>
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +277,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="ls lsrepeat ">
+        <div id="addDeps" class="ls lsrepeat " style="display:none;">
             <div class="lsh">Add Dependants
             </div>
             <div class="lsd">
@@ -168,392 +309,10 @@
                     </thead>
                     <tbody>
                         <tr class="spaceUnder" id="dp0">
-                            <!--<td><apex:inputCheckbox id="check"/></td>
-                            <td><apex:inputField id="firstName" value="{!dependent.First_Name__c}"/></td>
-                            <td><apex:inputField id="surname" value="{!dependent.Surname__c}"/></td>
-                            <td><apex:inputField id="relation" value="{!dependent.Relation__c}"/></td>
-                            <td><apex:inputField id="relatedTo" value="{!dependent.First_Name__c}"/></td>
-                            <td><apex:inputField id="dob" value="{!dependent.Date_of_Birth__c}"/></td>
-                            <td><apex:inputField id="financial" value="{!dependent.Financial_Dependant__c}"/></td>
-                            <td><apex:inputField id="gender" value="{!dependent.Gender__c}"/></td>
-                            <td><apex:inputField id="age" value="{!dependent.Dependant_until_age__c}"/></td>
-                            <td><apex:inputField id="health" value="{!dependent.Health_conditions__c}"/></td>
-                            <td><apex:inputField id="pob" value="{!dependent.Place_of_Birth__c}"/></td-->
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <!--table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
-                <thead>
-                    <tr>
-                        <td class="lccell lccellselect">
-                        </td>
-                        <td class="lccell">
-                        </td>
-                    </tr>
-                </thead>
-                <tbody class="sortableRow ui-sortable" data-fragmentguid="cb2339b9-7897-4459-85ad-5dc615deb3ae" data-objectid="a3b4cc06-1a62-4fe9-8141-163f156e1199" data-repeatpath="">
-                    <tr data-index="0" class="lsrepeat-row">
-                        <td class="touchable lccell lccellselect ui-sortable-handle">
-                            <div class="lc lcselect">
-                                <span class="MoveIcon MoveIconSection">
-                                            <span class="sr-only">Move Row
-                                            </span>
-                                </span>
-                                <label class="sr-only" for="La3b4cc06-1a62-4fe9-8141-163f156e1199selectRow">Select Row
-                                </label>
-                                <input type="checkbox" name="La3b4cc06-1a62-4fe9-8141-163f156e1199_chkSelect" value="0" class="row-select" id="La3b4cc06-1a62-4fe9-8141-163f156e1199selectRow" />
-                            </div>
-                        </td>
-                        <td class="lccell">
-                            <div class="lc">
-                                <div class="ls">
-                                    <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
-                                        <tbody>
-                                            <tr>
-                                                <td class="lccell" style="width:33%">
-                                                </td>
-                                                <td class="lccell" style="width:33%">
-                                                </td>
-                                                <td class="lccell" style="width:17%">
-                                                </td>
-                                                <td class="lccell" style="width:17%">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="lccell">
-                                                    <div class="lc">
-                                                        <div class="question-group">
-                                                            <h3 class="question-text">  
-                                                                            <label for="Q1687_0">First Name
-                                                                            </label>  
-                                                                        </h3>
-                                                            <div class="question-body">
-                                                                <input type="text" id="Q1687_0" name="Q1687_0" value="" placeholder="" class="form-control" spellcheck="true" onblur="if ($('#Q1687_0_change').val() == '1') {wiz.delayPostback();}" autocomplete="off" />
-                                                                <input type="hidden" id="Q1687_0_change" name="Q1687_0_change" value="0" />
-                                                                <script type="text/javascript">
-                                                                    wiz.wireTextChanged('#Q1687_0', '#Q1687_0_change', '');
-                                                                </script>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="lccell">
-                                                    <div class="lc">
-                                                        <div class="question-group">
-                                                            <h3 class="question-text">  
-                                                                                    <label for="Q1688_0">Surname 
-                                                                                    </label>  
-                                                                                </h3>
-                                                            <div class="question-body">
-                                                                <input type="text" id="Q1688_0" name="Q1688_0" value="" placeholder="" class="form-control" spellcheck="true" onblur="if ($('#Q1688_0_change').val() == '1') {wiz.delayPostback();}" autocomplete="off" />
-                                                                <input type="hidden" id="Q1688_0_change" name="Q1688_0_change" value="0" />
-                                                                <script type="text/javascript">
-                                                                    wiz.wireTextChanged('#Q1688_0', '#Q1688_0_change', '');
-                                                                </script>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="lccell">
-                                                    <div class="lc">
-                                                        <div class="question-group">
-                                                            <h3 class="question-text">  
-                                                                                            <label id="Q1810_0Text" for="Q1810_0">Relation
-                                                                                            </label>  
-                                                                                        </h3>
-                                                            <div class="question-body">
-                                                                <select class="form-control" id="Q1810_0" name="Q1810_0">
-                                                                    <option>
-                                                                    </option>
-                                                                    <option value="2610">Son
-                                                                    </option>
-                                                                    <option value="2611">Daughter
-                                                                    </option>
-                                                                    <option value="2612">Other
-                                                                    </option>
-                                                                    <option value="2613">Grandmother
-                                                                    </option>
-                                                                    <option value="2614">Grandfather
-                                                                    </option>
-                                                                    <option value="2616">Step-Daughter
-                                                                    </option>
-                                                                    <option value="2617">Step-Son
-                                                                    </option>
-                                                                    <option value="2618">Step-Father
-                                                                    </option>
-                                                                    <option value="2619">Parent
-                                                                    </option>
-                                                                    <option value="2620">Husband
-                                                                    </option>
-                                                                    <option value="2621">Wife
-                                                                    </option>
-                                                                    <option value="2622">Brother
-                                                                    </option>
-                                                                    <option value="2623">Sister
-                                                                    </option>
-                                                                    <option value="2624">Mother
-                                                                    </option>
-                                                                    <option value="2625">Father
-                                                                    </option>
-                                                                    <option value="2626">Daughter-in-law
-                                                                    </option>
-                                                                    <option value="2627">Son-in-law
-                                                                    </option>
-                                                                    <option value="2628">Father-in-law
-                                                                    </option>
-                                                                    <option value="2629">Mother-in-law
-                                                                    </option>
-                                                                    <option value="2630">Brother-in-law
-                                                                    </option>
-                                                                    <option value="2631">Sister-in-law
-                                                                    </option>
-                                                                    <option value="2632">Grandson
-                                                                    </option>
-                                                                    <option value="2633">Granddaughter
-                                                                    </option>
-                                                                    <option value="2634">ex-Husband
-                                                                    </option>
-                                                                    <option value="2635">ex-Wife
-                                                                    </option>
-                                                                    <option value="2636">Nephew
-                                                                    </option>
-                                                                    <option value="2637">Niece
-                                                                    </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="lccell">
-                                                    <div class="lc">
-                                                        <div class="question-group">
-                                                            <h3 class="question-text">  
-                                                                                            <label id="Q4329_0Text" for="Q4329_0">Related To 
-                                                                                                <span class="m">*
-                                                                                                </span>
-                                                                                            </label>  
-                                                                                        </h3>
-                                                            <div class="question-body">
-                                                                <select class="form-control" id="Q4329_0" name="Q4329_0" onchange="wiz.reload()">
-                                                                    <option>
-                                                                    </option>
-                                                                    <option value="12167">Ramu
-                                                                    </option>
-                                                                    <option value="12169">Pavitra
-                                                                    </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="ls">
-                                    <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
-                                        <tbody>
-                                            <tr>
-                                                <td class="lccell" style="width:33%">
-                                                </td>
-                                                <td class="lccell" style="width:33%">
-                                                </td>
-                                                <td class="lccell" style="width:34%">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="lccell">
-                                                    <div class="lc">
-                                                        <div class="question-group">
-                                                            <h3 class="question-text">  
-                                                                                            <label for="Q1691_0">Date of Birth
-                                                                                            </label>  
-                                                                                        </h3>
-                                                            <div class="question-body">
-                                                                <div class="input-group" style="width:200px">
-                                                                    <input type="text" id="Q1691_0" name="Q1691_0" class="form-control hasDatepicker" value="" />
-                                                                    <span class="input-group-btn"> 
-                                                                                                        <button class="btn btn-default" type="button" onclick="$('#Q1691_0').datepicker('show');" title="Select Date" id="Q1691_0_btn"> 
-                                                                                                            <img width="12" height="11" alt="Select Date" src="/Images/calendar2.gif"/> 
-                                                                                                            </button> 
-                                                                                                        </span>
-                                                                </div>
-                                                                <script type="text/javascript">
-                                                                    $('#Q1691_0').datepicker({
-                                                                        showOn: 'none',
-                                                                        changeMonth: true,
-                                                                        changeYear: true,
-                                                                        nextText: '>',
-                                                                        prevText: ' < ',dayNames: ['
-                                                                        Sunday ','
-                                                                        Monday ','
-                                                                        Tuesday ','
-                                                                        Wednesday ','
-                                                                        Thursday ','
-                                                                        Friday ','
-                                                                        Saturday '],dayNamesMin: ['
-                                                                        Sun ','
-                                                                        Mon ','
-                                                                        Tue ','
-                                                                        Wed ','
-                                                                        Thu ','
-                                                                        Fri ','
-                                                                        Sat '],
-                                                                        monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', ''],
-                                                                        dateFormat: 'd/mm/yy',
-                                                                        isRTL: false,
-                                                                        yearRange: 'c-100:c+100',
-                                                                        constrainInput: false,
-                                                                        onSelect: function(tsDate, troPicker) {
-                                                                            $('#Q1691_0').focus();
-                                                                        },
-
-                                                                        onChangeMonthYear: function(year, month, inst) {
-                                                                            if (year == 1899 || year == 1900 || year == 0) {
-                                                                                $(this).datepicker('setDate', $(this).val());
-                                                                                var now = $(this).datepicker("getDate");
-
-                                                                                if (now == null) {
-                                                                                    now = new Date();
-                                                                                }
-
-                                                                                if (year == 1899) // Clicked backward
-                                                                                {
-                                                                                    now.setMonth(now.getMonth() - 1);
-                                                                                } else if (year == 1900) // Clicked forward
-                                                                                {
-                                                                                    now.setMonth(now.getMonth() + 1);
-                                                                                } else if (year == 0) // Clicked a month
-                                                                                {
-                                                                                    now.setMonth(month - 1);
-                                                                                }
-                                                                                $(this).datepicker('setDate', now);
-                                                                            }
-                                                                        }
-                                                                    });
-                                                                </script>
-                                                            </div>
-                                                        </div>
-                                                        <div class="question-group">
-                                                            <h3 class="question-text">  
-                                                                                                        <label for="Q1693_0">Dependant until age
-                                                                                                        </label>  
-                                                                                                    </h3>
-                                                            <div class="question-body">
-                                                                <input type="text" id="Q1693_0" name="Q1693_0" value="" placeholder="" class="form-control" pattern="\d*" maxlength="29" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="lccell">
-                                                    <div class="lc">
-                                                        <div class="question-group">
-                                                            <h3 class="question-text">  
-                                                                                                            <div id="Q1695_0Text" class="qtdiv" role="heading">Financial Dependant
-                                                                                                            </div>  
-                                                                                                        </h3>
-                                                            <div class="question-body">
-                                                                <div class="radio-inline">
-                                                                    <label>
-                                                                        <input type="radio" id="Q1695_0-A2344" name="Q1695_0" value="2344" aria-describedby="Q1695_0Text" /> Yes
-                                                                    </label>
-                                                                </div>
-                                                                <div class="radio-inline">
-                                                                    <label>
-                                                                        <input type="radio" id="Q1695_0-A2345" name="Q1695_0" value="2345" aria-describedby="Q1695_0Text" /> No
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="question-group">
-                                                            <h3 class="question-text">  
-                                                                                                                    <label for="Q1696_0">Health conditions
-                                                                                                                    </label>  
-                                                                                                                </h3>
-                                                            <div class="question-body">
-                                                                <input type="text" id="Q1696_0" name="Q1696_0" value="" placeholder="" class="form-control" spellcheck="true" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="lccell">
-                                                    <div class="lc">
-                                                        <div class="question-group">
-                                                            <h3 class="question-text">  
-                                                                                                                        <div id="Q1698_0Text" class="qtdiv" role="heading">Gender
-                                                                                                                        </div>  
-                                                                                                                    </h3>
-                                                            <div class="question-body">
-                                                                <div class="radio-inline">
-                                                                    <label>
-                                                                        <input type="radio" id="Q1698_0-A2348" name="Q1698_0" value="2348" aria-describedby="Q1698_0Text" /> Male
-                                                                    </label>
-                                                                </div>
-                                                                <div class="radio-inline">
-                                                                    <label>
-                                                                        <input type="radio" id="Q1698_0-A2349" name="Q1698_0" value="2349" aria-describedby="Q1698_0Text" /> Female
-                                                                    </label>
-                                                                </div>
-                                                                <div class="radio-inline">
-                                                                    <label>
-                                                                        <input type="radio" id="Q1698_0-A12580" name="Q1698_0" value="12580" aria-describedby="Q1698_0Text" /> X
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="question-group">
-                                                            <h3 class="question-text">  
-                                                                                                                                    <label for="Q1699_0">Place of Birth
-                                                                                                                                    </label>  
-                                                                                                                                </h3>
-                                                            <div class="question-body">
-                                                                <input type="text" id="Q1699_0" name="Q1699_0" value="" placeholder="" class="form-control" spellcheck="true" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="ls">
-                                    <table class="NoPadding NoSpacing NoBorder" width="100%" role="presentation">
-                                        <tbody>
-                                            <tr>
-                                                <td class="lccell">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="lccell">
-                                                    <div class="lc">
-                                                        <div class="question-group">
-                                                            <div class="question-body">
-                                                                <div id="Q1700_0" class="question-label">
-                                                                    <br/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="lsrepeat-spacer" data-index="0">
-                        <td colspan="2">
-                        </td>
-                    </tr>
-                </tbody>
-            </table-->
-            <!--div class="lscommand">
-                <input id="La3b4cc06-1a62-4fe9-8141-163f156e1199_add" type="submit" class="add" data-command="/wizard/addSectionRow?id=c00187fb-c967-4ad5-95ca-96148aea0f14&amp;EmailTrackerID=2bfa85d5-8229-4ade-938c-e4ccee1ed418&amp;Portal=1&amp;prepared=true&amp;logGuid=1ce01d6c-83aa-4eea-9cc7-3df055daa02e&amp;_=1520033800429" data-fragmentguid="cb2339b9-7897-4459-85ad-5dc615deb3ae" data-objectid="a3b4cc06-1a62-4fe9-8141-163f156e1199" data-repeatpath="" title="Add" accesskey="A" value="" />
-                <input type="submit" class="delete" data-command="/wizard/deleteSectionRow?id=c00187fb-c967-4ad5-95ca-96148aea0f14&amp;EmailTrackerID=2bfa85d5-8229-4ade-938c-e4ccee1ed418&amp;Portal=1&amp;prepared=true&amp;logGuid=1ce01d6c-83aa-4eea-9cc7-3df055daa02e&amp;_=1520033800429" data-fragmentguid="cb2339b9-7897-4459-85ad-5dc615deb3ae" data-objectid="a3b4cc06-1a62-4fe9-8141-163f156e1199" data-repeatpath="" title="Delete" value="" />
-                <input id="La3b4cc06-1a62-4fe9-8141-163f156e1199_filldown" type="submit" class="fillDown" data-command="/wizard/fillDown?id=c00187fb-c967-4ad5-95ca-96148aea0f14&amp;EmailTrackerID=2bfa85d5-8229-4ade-938c-e4ccee1ed418&amp;Portal=1&amp;prepared=true&amp;logGuid=1ce01d6c-83aa-4eea-9cc7-3df055daa02e&amp;_=1520033800429" data-fragmentguid="cb2339b9-7897-4459-85ad-5dc615deb3ae" data-objectid="a3b4cc06-1a62-4fe9-8141-163f156e1199" data-repeatpath="" title="Duplicate Last Row" accesskey="F" value="" /> &nbsp;
-            </div-->
         </div>
     </div>
 </apex:component>

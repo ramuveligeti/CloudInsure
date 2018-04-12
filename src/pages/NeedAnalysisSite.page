@@ -2,7 +2,7 @@
     <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"/>
     <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"/>
     <apex:includeScript value="{!$Resource.BootStrapDatepicker}"/>
-    <c:sObjectRemote escape="true"/>
+
     <style>
         a.mover { background-color: #FBE863; color: #957D31; padding: 6px 12px; position: absolute; font-weight: bold; text-decoration: none; }
         .next-tab { border-left: 5px solid #fff; border-bottom: 5px solid #fff; top: 250px; right: 0;} 
@@ -14,6 +14,7 @@
     </style>
     <script type="text/javascript">
     $(document).ready(function() {
+        var needAnalysis;
         $('.sr-only').hide();
         $('.datepicker').datepicker();
         $(function() {
@@ -91,126 +92,10 @@
                 <c:PersonalDetailsNew needAnalysis="{!Need_Analysis__c}"></c:PersonalDetailsNew>
             </div>
             <div id="tabs-2" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-2__item">
-                <!--apex:pageBlock id="DependentBlock">
-                    <style>
-                        td {
-                        padding-bottom: 1px !important;
-                        }
-                    </style>
-                    <apex:pageBlockSection >
-                        <apex:pageBlockSectionItem >
-                            <apex:outputLabel >Do you have dependents?</apex:outputLabel>
-                            <apex:inputField value="{!Need_Analysis__c.Dependents__c}"></apex:inputField>
-                        </apex:pageBlockSectionItem>
-                    </apex:pageBlockSection>
-                    <div class="slds-button-group" role="group">
-                        <apex:commandButton value="Add New Row" action="{!addNewDependent}" reRender="DependentBlock" styleClass="slds-button slds-button_brand"></apex:commandButton>
-                        <apex:commandButton value="Delete" action="{!deleteRows}" reRender="DependentBlock" styleClass="slds-button slds-button_brand"></apex:commandButton>
-                    </div>
-
-                    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
-                        <thead>
-                            <tr class="slds-text-title_caps">
-                                <th scope="col"/>
-                                <th scope="col">
-                                    <div class="slds-truncate" title="First Name">First Name</div>
-                                </th>
-                                <th scope="col">
-                                    <div class="slds-truncate" title="Surname">Surname</div>
-                                </th>
-                                <th scope="col">
-                                    <div class="slds-truncate" title="Relation">Relation</div>
-                                </th>
-                                <th scope="col">
-                                    <div class="slds-truncate" title="Related To">Related To</div>
-                                </th>
-                                <th scope="col">
-                                    <div class="slds-truncate" title="Date of Birth">Date of Birth</div>
-                                </th>
-                                <th scope="col">
-                                    <div class="slds-truncate" title="Financial Dependent">Financial Dependent</div>
-                                </th>
-                                <th scope="col">
-                                    <div class="slds-truncate" title="Gender">Gender</div>
-                                </th>
-                                <th scope="col">
-                                    <div class="slds-truncate" title="Dependent until age">Dependent until age</div>
-                                </th>
-                                <th scope="col">
-                                    <div class="slds-truncate" title="Health conditions">Health conditions</div>
-                                </th>
-                                <th scope="col">
-                                    <div class="slds-truncate" title="Place of Birth">Place of Birth</div>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <apex:repeat value="{!dependents}" var="dp">
-                                <tr>
-                                    <th scope="row" data-label="Opportunity Name">
-                                        <div class="slds-truncate" title="Select">
-                                            <apex:inputCheckbox value="{!dp.selected}" />
-                                        </div>
-                                    </th>
-                                    <td data-label="First Name">
-                                        <div class="slds-truncate" title="Cloudhub">
-                                            <apex:inputField id="firstName" value="{!dp.dependent.First_Name__c}"/>
-                                        </div>
-                                    </td>
-                                    <td data-label="Surname">
-                                        <div class="slds-truncate" title="Surname">
-                                            <apex:inputField id="surname" value="{!dp.dependent.Surname__c}"/>
-                                        </div>
-                                    </td>
-                                    <td data-label="Relation">
-                                        <div class="slds-truncate" title="Relation">
-                                            <apex:inputField id="relation" value="{!dp.dependent.Relation__c}"/>
-                                        </div>
-                                    </td>
-                                    <td data-label="Related To">
-                                        <div class="slds-truncate" title="Related To">
-                                            <apex:inputField id="relatedTo" value="{!dp.dependent.First_Name__c}"/>
-                                        </div>
-                                    </td>
-                                    <td data-label="DOB">
-                                        <div class="slds-truncate" title="DOB">
-                                            <apex:inputField id="dob" value="{!dp.dependent.Date_of_Birth__c}"/>
-                                        </div>
-                                    </td>
-                                    <td data-label="financial">
-                                        <div class="slds-truncate" title="Financial Dependent">
-                                            <apex:inputField id="financial" value="{!dp.dependent.Financial_Dependant__c}"/>
-                                        </div>
-                                    </td>
-                                    <td data-label="Gender">
-                                        <div class="slds-truncate" title="Gender">
-                                            <apex:inputField id="gender" value="{!dp.dependent.Gender__c}"/>
-                                        </div>
-                                    </td>
-                                    <td data-label="Dependent Until age">
-                                        <div class="slds-truncate" title="Dependent Until age">
-                                            <apex:inputField id="dependentAge" value="{!dp.dependent.Dependant_until_age__c}"/>
-                                        </div>
-                                    </td>
-                                    <td data-label="Health Conditions">
-                                        <div class="slds-truncate" title="Health Conditions">
-                                            <apex:inputField id="health" value="{!dp.dependent.Health_conditions__c}"/>
-                                        </div>
-                                    </td>
-                                    <td data-label="Place of Birth">
-                                        <div class="slds-truncate" title="Place of Birth">
-                                            <apex:inputField id="pob" value="{!dp.dependent.Place_of_Birth__c}"/>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </apex:repeat>
-                        </tbody>
-                    </table>                    
-                </apex:pageBlock-->
                 <c:Dependents needAnalysis="{!Need_Analysis__c}"></c:Dependents>
             </div>
             <div id="tabs-3" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-3__item">
-                <c:EmploymentDetails ></c:EmploymentDetails>
+                <c:EmploymentDetailsNew needAnalysis="{!Need_Analysis__c}"></c:EmploymentDetailsNew>
             </div>
             <div id="tabs-4" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-4__item">
                 <c:EmploymentDetails ></c:EmploymentDetails>

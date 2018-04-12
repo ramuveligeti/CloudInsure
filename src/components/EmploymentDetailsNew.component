@@ -1,37 +1,251 @@
-<apex:component >
+<apex:component controller="NeedAnalysisController">
     <apex:attribute name="needAnalysis" type="Need_Analysis__c" description="Need Analysis object"/>
-    <table width="100%" id="employmentTable">
-        <thead>
-            <th>Details For</th>
-            <th>Are you happy to provide these details?</th>
-            <th>IRD Number</th>
-            <th>Income tax rate (%)</th>
-            <th>PIR rate (%)</th>
-            <th>Sick leave entitlement (days)</th>
-            <th>Main source of income</th>
-            <th>Expected retirement age</th>
-        </thead>
-        <tbody>
-            <tr class="spaceUnder" id="emp1">
-                <td><select id="relTo1" style="display:none;"/></td>
-                <td><apex:inputField id="details1" value="{!needAnalysis.Details_C1__c}"/></td>
-                <td><apex:inputField id="ird1" value="{!needAnalysis.IRD_Number_C1__c}"/></td>
-                <td><apex:inputField id="income1" value="{!needAnalysis.Income_tax_rate_C1__c}"/></td>
-                <td><apex:inputField id="pir1" value="{!needAnalysis.PIR_rate_C1__c}"/></td>
-                <td><apex:inputField id="sick1" value="{!needAnalysis.Sick_leave_entitlement_days_C1__c}"/></td>
-                <td><apex:inputField id="main1" value="{!needAnalysis.Main_source_of_income_C1__c}"/></td>
-                <td><apex:inputField id="expected1" value="{!needAnalysis.Expected_retirement_age_C1__c}"/></td>
-            </tr>
-            <tr class="spaceUnder" id="emp2">
-                <td><select id="relTo2" style="display:none;"/></td>
-                <td><apex:inputField id="details2" value="{!needAnalysis.Details_C2__c}"/></td>
-                <td><apex:inputField id="ird2" value="{!needAnalysis.IRD_Number_C2__c}"/></td>
-                <td><apex:inputField id="income2" value="{!needAnalysis.Income_tax_rate_C2__c}"/></td>
-                <td><apex:inputField id="pir2" value="{!needAnalysis.PIR_rate_C2__c}"/></td>
-                <td><apex:inputField id="sick2" value="{!needAnalysis.Sick_leave_entitlement_days_C2__c}"/></td>
-                <td><apex:inputField id="main2" value="{!needAnalysis.Main_source_of_income_C2__c}"/></td>
-                <td><apex:inputField id="expected2" value="{!needAnalysis.Expected_retirement_age_C2__c}"/></td>
-            </tr>
-        </tbody>
-    </table>
+    <apex:attribute name="employeeDetail" type="Employee_Detail__c" description="Employee Detail object"/>
+    <script type="text/javascript">
+        var eNo =0;
+        var empDetails = [];
+        function Employee_Detail__c(){
+            this.Employer_Name__c = null;
+            this.Address__c = null;
+            this.Employment_status__c = '';
+            this.End_date__c = null;
+            this.Job_title__c = null;
+            this.Start_date__c = null;
+            this.RowNum__c = null;
+            this.Id = null;
+            this.Details_For__c = null;
+            this.Need_Analysis__c = null;
+            this.Administrative__c = null;
+            this.Supervisory__c = null;
+            this.Manual__c = null;
+            this.Travel__c = null;
+        }
+
+        function addNewEmployement(empBlock,relTo){
+            var eNumber = ++eNo;
+            console.log($('span[id$=mockEmployementBox]'));
+            $('span[id$=mockEmployementBox]').clone().appendTo('div[id$='+empBlock+']').removeAttr('id').show();
+            var relToVal = $('#'+relTo).val();
+            $('div[id$='+empBlock+']').append('<input type="hidden" id="rowNum" value="'+eNumber+'"/><input type="hidden" id="rowId'+eNumber+'"/><input type="hidden" id="block" value="'+relToVal+'"/>');
+        }
+
+        function showEmploymentBox(rel,panel,block){
+            if($('#'+rel).val() != '' && $('#'+rel).val() != null){
+                $('span[id$='+panel+']').show();
+                $('div[id$='+block+'] td.pbTitle').append('<h2 class="mainTitle">Employment Details: '+$('#'+rel).val()+'</h2>');
+            }
+        }
+
+        function saveEmploymentDetails(empBlock,){
+            needAnalysis.Details_C1__c = $('select[id$=Details1]').val();
+            needAnalysis.Details_C2__c = $('select[id$=Details2]').val();
+            needAnalysis.IRD_Number_C1__c = $('input[id$=ird1]').val();
+            needAnalysis.IRD_Number_C2__c = $('input[id$=ird2]').val();
+            needAnalysis.Income_tax_rate_C1__c = $('input[id$=incomeTax1]').val();
+            needAnalysis.Income_tax_rate_C2__c = $('input[id$=incomeTax2]').val();
+            needAnalysis.PIR_rate_C1__c = $('input[id$=pir1]').val();
+            needAnalysis.PIR_rate_C2__c = $('input[id$=pir2]').val();
+            needAnalysis.Sick_leave_entitlement_days_C1__c = $('input[id$=sick1]').val();
+            needAnalysis.Sick_leave_entitlement_days_C2__c = $('input[id$=sick2]').val();
+            needAnalysis.Main_source_of_income_C1__c = $('select[id$=mainIncome1]').val();
+            needAnalysis.Main_source_of_income_C2__c = $('select[id$=mainIncome2]').val();
+            needAnalysis.Expected_retirement_age_C1__c = $('input[id$=retirement1]').val();
+            needAnalysis.Expected_retirement_age_C2__c = $('input[id$=retirement2]').val();
+            needAnalysis.Id = $('#needAnalysisId').val();
+            
+            empDetails = [];
+            fetchEmpDetails('employeeBlock1','relTo1');
+            fetchEmpDetails('employeeBlock2','relTo2');
+
+            console.log(empDetails);
+            createEmpDetails(needAnalysis,empDetails);
+        }
+
+        function fetchEmpDetails(empBlock,relTo){
+            $('div[id$='+empBlock+'] table.detailList').each(function(){
+                $(this).each(function(i,row){
+                    var emp = new Employee_Detail__c();
+                    var $row = $(row),
+                        $status = $row.find(':input[id$=status]'),
+                        $title = $row.find(':input[id$=title]'),
+                        $startDate = $row.find(':input[id$=startDate]'),
+                        $endDate = $row.find(':input[id$=endDate]'),
+                        $empName = $row.find(':input[id$=empName]'),
+                        $empAddress = $row.find(':input[id$=empAddress]'),
+                        $admin = $row.find(':input[id$=admin]'),
+                        $supervisory = $row.find(':input[id$=supervisory]'),
+                        $manual = $row.find(':input[id$=manual]'),
+                        $travel = $row.find(':input[id$=travel]'),
+                        $rowNum = $row.closest('span').next('input[id$=rowNum]'),
+                        $rowId = $row.closest('span').next().next('input[id*=rowId]');
+
+                    emp.Employment_status__c = $status.val();
+                    emp.Job_title__c = $title.val();
+                    emp.Start_date__c = $startDate.val();
+                    emp.End_date__c = $endDate.val();
+                    emp.Employer_Name__c = $empName.val();
+                    emp.Address__c = $empAddress.val();
+                    emp.Administrative__c = $admin.val();
+                    emp.Supervisory__c = $supervisory.val();
+                    emp.Manual__c = $manual.val();
+                    emp.Travel__c = $travel.val();
+                    emp.RowNum__c = $rowNum.val();
+                    if($rowId.val() != ''){
+                        emp.Id = $rowId.val();
+                    }
+                    emp.Details_For__c = $('#'+relTo).val();
+                    emp.Need_Analysis__c = $('#needAnalysisId').val();
+                    empDetails.push(emp);
+
+                });
+            });
+        }
+        function createEmpDetails(needAnalysis,empDetails){
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.NeedAnalysisController.upsertEmploymentDetails}',JSON.stringify(needAnalysis),JSON.stringify(empDetails),
+                function(result, event){
+                    if (event.status) {
+                        console.log(result);
+                        for(i=0;i<=result.length;i++){
+                            $("div[id*=employeeBlock] table.detailList").each(function (j) {
+                                $(this).each(function(k,row){
+                                    var $row = $(row),
+                                        $rowNum = $row.closest('span').next('input[id$=rowNum]'),
+                                        $rowId = $row.closest('span').next().next('input[id*=rowId]'),
+                                        $relTo = $row.closest('span').next().next().next('input[id$=block]');
+                                    console.log(result[i]);
+                                    //console.log($rowNum.val()+'=='+result[i].RowNum__c);
+                                    //console.log($relTo.val()+'=='+result[i].Details_For__c);
+                                    if(result[i] != undefined && $rowNum.val() == result[i].RowNum__c && result[i].Details_For__c == $relTo.val()){
+                                        $rowId.val(result[i].Id);
+                                    }
+                                    //console.log(result[i]);
+                                });
+                            });
+                        }
+                    } else if (event.type === 'exception') {
+                        
+                    } else {
+                        
+                    }
+                }, 
+                {escape: true}
+            );
+        }
+    </script>
+    <apex:pageBlock >
+        <apex:pageBlockButtons style="text-align:center;">
+            <input type="button" class="insertBtn" value="Save" id="addBtn" onclick="saveEmploymentDetails();"></input>
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection columns="3" showHeader="false">
+            <apex:outputLabel >Details For</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <select id="relTo1" style="display:none;" onchange="showEmploymentBox('relTo1','empBlockPanel1','employeeBlock1');"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <select id="relTo2" style="display:none;" onchange="showEmploymentBox('relTo2','empBlockPanel2','employeeBlock2');"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Are you happy to provide these details?</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Details1" value="{!needAnalysis.Details_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="Details2" value="{!needAnalysis.Details_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >IRD Number</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="ird1" value="{!needAnalysis.IRD_Number_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="ird2" value="{!needAnalysis.IRD_Number_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Income tax rate (%)</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="incomeTax1" value="{!needAnalysis.Income_tax_rate_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="incomeTax2" value="{!needAnalysis.Income_tax_rate_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >PIR rate (%)</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="pir1" value="{!needAnalysis.PIR_rate_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="pir2" value="{!needAnalysis.PIR_rate_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Sick leave entitlement (days)</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="sick1" value="{!needAnalysis.Sick_leave_entitlement_days_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="sick2" value="{!needAnalysis.Sick_leave_entitlement_days_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Main source of income</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="mainIncome1" value="{!needAnalysis.Main_source_of_income_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="mainIncome2" value="{!needAnalysis.Main_source_of_income_C2__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputLabel >Expected retirement age</apex:outputLabel>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="retirement1" value="{!needAnalysis.Expected_retirement_age_C1__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField id="retirement2" value="{!needAnalysis.Expected_retirement_age_C2__c}"/>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        <br/>
+        <apex:outputPanel id="mockEmployementBox" style="display:none">
+            <div style="border:1px solid;border-radius:16px;padding-right:16px;border-color:#ccc;">
+                <apex:pageBlockSection columns="2">
+                    <apex:inputField id="status" value="{!employeeDetail.Employment_status__c}"/>
+                    <apex:inputField id="title" value="{!employeeDetail.Job_title__c}"/>
+                    <apex:pageBlockSectionItem>
+                        <apex:outputLabel>Start Date</apex:outputLabel>
+                        <input id="startDate" type="date"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem>
+                        <apex:outputLabel>Start Date</apex:outputLabel>
+                        <input id="endDate" type="date"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:inputField id="empName" value="{!employeeDetail.Employer_Name__c}"/>
+                    <apex:inputField id="empAddress" value="{!employeeDetail.Address__c}"/>
+                    <apex:inputField id="admin" value="{!employeeDetail.Administrative__c}"/>
+                    <apex:inputField id="supervisory" value="{!employeeDetail.Supervisory__c}"/>
+                    <apex:inputField id="manual" value="{!employeeDetail.Manual__c}"/>
+                    <apex:inputField id="travel" value="{!employeeDetail.Travel__c}"/>
+                    <apex:outputPanel/>
+                </apex:pageBlockSection>
+            </div>
+            <br/>
+        </apex:outputPanel>
+        <apex:pageBlockSection columns="2" showHeader="false">
+            <apex:outputPanel id="empBlockPanel1" style="display:none;">
+                <apex:pageBlockSectionItem >
+                    <apex:pageBlock id="employeeBlock1">
+                        <apex:pageBlockButtons location="top" style="text-align:center;">
+                            <apex:commandButton value ="Add" onclick="addNewEmployement('employeeBlock1','relTo1');return false;"/>
+                        </apex:pageBlockButtons>
+                    </apex:pageBlock>
+                </apex:pageBlockSectionItem >
+            </apex:outputPanel>
+            <apex:outputPanel id="empBlockPanel2" style="display:none;">
+                <apex:pageBlockSectionItem >
+                    <apex:pageBlock id="employeeBlock2">
+                        <apex:pageBlockButtons location="top" style="text-align:center;">
+                            <apex:commandButton onclick="addNewEmployement('employeeBlock2','relTo2');return false;" value="Add"></apex:commandButton>
+                        </apex:pageBlockButtons>
+                    </apex:pageBlock>
+                </apex:pageBlockSectionItem >
+            </apex:outputPanel>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
 </apex:component>

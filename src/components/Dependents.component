@@ -12,31 +12,32 @@
             var naId = $('#needAnalysisId').val();
             $("select[id*=relTo]").empty();
             $("select[id*=relTo]").append(new Option('--None--',''));
-            sObject.query('select Id, First_Name_C1__c,First_Name_C2__c,Surname_C1__c,Surname_C2__c from Need_Analysis__c where Id = \''+naId+'\' limit 1',{escape:false},function(nas,event){
-                var naObj = nas[0];
-                if(naObj.First_Name_C1__c != null && naObj.First_Name_C1__c != '' && naObj.Surname_C1__c != null && naObj.Surname_C1__c != ''){
-                    $("select[id*=relTo]").append(new Option(naObj.First_Name_C1__c+' '+naObj.Surname_C1__c, naObj.First_Name_C1__c+' '+naObj.Surname_C1__c));
-                }
-                if(naObj.First_Name_C2__c != null && naObj.First_Name_C2__c != '' && naObj.Surname_C2__c != null && naObj.Surname_C2__c != ''){
-                    $("select[id*=relTo]").append(new Option(naObj.First_Name_C2__c+' '+naObj.Surname_C2__c, naObj.First_Name_C2__c+' '+naObj.Surname_C2__c));
-                }
-            });
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.NeedAnalysisController.queryNeedAnalysis}',naId,
+                function(result, event){
+                    if (event.status) {
+                        var naObj = result;
+                        if(naObj.First_Name_C1__c != null && naObj.First_Name_C1__c != '' && naObj.Surname_C1__c != null && naObj.Surname_C1__c != ''){
+                            $("select[id*=relTo]").append(new Option(naObj.First_Name_C1__c+' '+naObj.Surname_C1__c, naObj.First_Name_C1__c+' '+naObj.Surname_C1__c));
+                            $("select[id*=relTo]").show();
+                        }
+                        if(naObj.First_Name_C2__c != null && naObj.First_Name_C2__c != '' && naObj.Surname_C2__c != null && naObj.Surname_C2__c != ''){
+                            $("select[id*=relTo]").append(new Option(naObj.First_Name_C2__c+' '+naObj.Surname_C2__c, naObj.First_Name_C2__c+' '+naObj.Surname_C2__c));
+                            $("select[id*=relTo]").show();
+                        }
+                    } else if (event.type === 'exception') {
+                        
+                    } else {
+                        
+                    }
+                }, 
+                {escape: true}
+            );
+            /*sObject.query('select Id, First_Name_C1__c,First_Name_C2__c,Surname_C1__c,Surname_C2__c from Need_Analysis__c where Id = \''+naId+'\' limit 1',{escape:false},function(nas,event){
+            });*/
         }
 
         function Dependent__c(){
-            /*var $row = $(row),            
-                $checked = $row.find('input[id*="check"]'),
-                $firstName = $row.find('input[id*="firstName"]'),
-                $surname = $row.find('input[id*="surname"]'),
-                $relation = $row.find('input[id*="relation"]'),
-                $relatedTo = $row.find('input[id*="relatedTo"]'),
-                $dob = $row.find('input[id*="dob"]'),
-                $financial = $row.find('input[id*="financial"]'),
-                $gender = $row.find('input[id*="gender"]'),
-                $age = $row.find('input[id*="age"]'),
-                $health = $row.find('input[id*="health"]'),
-                $pob = $row.find('input[id*="pob"]');*/
-
             this.First_Name__c = null;
             this.Surname__c = null;
             this.Relation__c = null;
@@ -203,7 +204,7 @@
                 $('select[id$=rel] option').clone().appendTo('#relation'+uId);
                 $('select[id$=fd] option').clone().appendTo('#financial'+uId);
                 $('select[id$=ge] option').clone().appendTo('#gender'+uId);
-                $('select[id$=relTo] option').clone().appendTo('#relatedTo'+uId);
+                $('select[id$=relTo1] option').clone().appendTo('#relatedTo'+uId);
             });
         }
 

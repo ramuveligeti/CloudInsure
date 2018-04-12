@@ -27,7 +27,7 @@ public with sharing class NeedAnalysisController {
 	}
 
 	@RemoteAction
-	public static ID updatePersonalDetails(String na){
+	public static ID upsertNeedAnalysis(String na){
 		system.debug('na=='+na);
 		JSONParser parser = JSON.createParser(na);
 		Need_Analysis__c wrap = (Need_Analysis__c)parser.readValueAs(Need_Analysis__c.class);
@@ -47,6 +47,21 @@ public with sharing class NeedAnalysisController {
 		List<Dependent__c> wrap = (List<Dependent__c>)JSON.deserialize(dp,List<Dependent__c>.class);
 		upsert wrap;
 		return wrap;
+	}
+
+	@RemoteAction
+	public static List<Employee_Detail__c> upsertEmploymentDetails(String na, String emp){
+		Need_Analysis__c nas = (Need_Analysis__c)JSON.deserialize(na,Need_Analysis__c.class);
+		upsert nas;
+
+		List<Employee_Detail__c> ed = (List<Employee_Detail__c>)JSON.deserialize(emp,List<Employee_Detail__c>.class);
+		upsert ed;
+		return ed;
+	}
+
+	@RemoteAction
+	public static Need_Analysis__c queryNeedAnalysis(String naId){
+		return [select Id, First_Name_C1__c,First_Name_C2__c,Surname_C1__c,Surname_C2__c from Need_Analysis__c where Id =:naId];
 	}
 
 	@RemoteAction

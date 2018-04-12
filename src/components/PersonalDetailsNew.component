@@ -46,14 +46,31 @@
             this.Email_address_C2__c = $('input[id$=Email_address_C2__c]').val();
             this.Business_Email_C1__c = $('input[id$=Business_Email_C1__c]').val();
             this.Business_Email_C2__c = $('input[id$=Business_Email_C2__c]').val();
+            this.Details_C1__c = '';
+            this.Details_C2__c = '';
+            this.IRD_Number_C1__c = '';
+            this.IRD_Number_C2__c = '';
+            this.Income_tax_rate_C1__c = '';
+            this.Income_tax_rate_C2__c = '';
+            this.PIR_rate_C1__c = '';
+            this.PIR_rate_C2__c = '';
+            this.Sick_leave_entitlement_days_C1__c = '';
+            this.Sick_leave_entitlement_days_C2__c = '';
+            this.Main_source_of_income_C1__c = '';
+            this.Main_source_of_income_C2__c = '';
+            this.Expected_retirement_age_C1__c = '';
+            this.Expected_retirement_age_C2__c = '';
+            if( $('#needAnalysisId').val() != ''){
+                this.Id = $('#needAnalysisId').val();
+            }
         }
 
-        function insertNewNeedAnalysis(){
+        /*function insertNewNeedAnalysis(){
             var needAnalysis = new Need_Analysis__c();
-            /*var naString = JSON.stringify(needAnalysis);
+            var naString = JSON.stringify(needAnalysis);
             naString = naString.replace(/\"([^(\")"]+)\":/g,"$1:");
             naString = naString.substring(1,naString.length-1);
-            console.log(naString);*/
+            console.log(naString);
             var newNa = new sObject('Need_Analysis__c',needAnalysis);
             console.log(newNa);
             newNa.insert(function(result,event){
@@ -62,18 +79,19 @@
                     $('#needAnalysisId').val(result[0].id);
                 }
             });
-        }
+        }*/
 
-        /*function updateNeedAnalysis(){
-            var needAnalysis = new Need_Analysis__c();
-            needAnalysis = needAnalysis.replace(/\"([^(\")"]+)\":/g,"$1:");
+        function upsertNeedAnalysis(){
+            needAnalysis = new Need_Analysis__c();
+            //needAnalysis = needAnalysis.replace(/\"([^(\")"]+)\":/g,"$1:");
             console.log(JSON.stringify(needAnalysis));
             Visualforce.remoting.Manager.invokeAction(
-                '{!$RemoteAction.NeedAnalysisController.updatePersonalDetails}',JSON.stringify(needAnalysis),
+                '{!$RemoteAction.NeedAnalysisController.upsertNeedAnalysis}',JSON.stringify(needAnalysis),
                 function(result, event){
                     if (event.status) {
                         console.log(result);
                         $('#needAnalysisId').val(result);
+
                     } else if (event.type === 'exception') {
                         
                     } else {
@@ -82,11 +100,11 @@
                 }, 
                 {escape: true}
             );
-        }*/
+        }
     </script>
     <apex:pageBlock >
-        <apex:pageBlockButtons >
-            <apex:commandButton value="Save" onclick="insertNewNeedAnalysis(); return false;"></apex:commandButton>
+        <apex:pageBlockButtons style="text-align:center;">
+            <apex:commandButton value="Save" onclick="upsertNeedAnalysis(); return false;"></apex:commandButton>
         </apex:pageBlockButtons>
         <apex:pageBlockSection columns="3" showHeader="false">
             <apex:outputLabel >Title</apex:outputLabel>

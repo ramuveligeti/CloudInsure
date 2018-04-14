@@ -65,12 +65,31 @@ public with sharing class NeedAnalysisController {
 	}
 
 	@RemoteAction
+	public static List<Income__c> upsertIncomeDetails(String na, String income){
+		Need_Analysis__c nas = (Need_Analysis__c)JSON.deserialize(na,Need_Analysis__c.class);
+		upsert nas;
+
+		List<Income__c> inc = (List<Income__c>)JSON.deserialize(income,List<Income__c>.class);
+		upsert inc;
+		return inc;
+	}
+
+	@RemoteAction
 	public static void deleteDependents(List<String> dpId){
 		List<Dependent__c> dpList = new List<Dependent__c>();
 		for(String dp: dpId){
 			dpList.add(new Dependent__c(Id = dp));
 		}
 		if(!dpList.isEmpty()){delete dpList;}
+	}
+
+	@RemoteAction
+	public static void deleteIncomeRec(List<String> incId){
+		List<Income__c> incList = new List<Income__c>();
+		for(String inc: incId){
+			incList.add(new Income__c(Id = inc));
+		}
+		if(!incList.isEmpty()){delete incList;}
 	}
 
 	public class dependentWrapper{

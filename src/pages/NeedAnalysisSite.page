@@ -68,6 +68,8 @@
             
             
         });
+
+        $('div[id*=earnedMessage] br').remove();
         
     });
     </script>
@@ -79,14 +81,14 @@
                 <li id="pdTab" class="slds-tabs_scoped__item slds-is-active" rel="0" title="Personal Details" role="presentation" onclick=""><a class="slds-tabs_scoped__link" href="#tabs-1" role="tab" tabindex="-1" aria-selected="true" aria-controls="tab-scoped-1" id="tab-scoped-1__item">Personal Details</a></li>
                 <li id="dpTab" class="slds-tabs_scoped__item " title="Dependents" rel="1" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-2" role="tab" tabindex="0" aria-selected="false" aria-controls="tab-scoped-2" id="tab-scoped-2__item">Dependents</a></li>
                 <li id="fiTab" class="slds-tabs_scoped__item" title="Employment Details" rel="2" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">Employment Details</a></li>
-                <li id="fiTab" class="slds-tabs_scoped__item" title="Income" rel="2" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">Income</a></li>
-                <li id="fiTab" class="slds-tabs_scoped__item" title="Expenses" rel="2" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">Expenses</a></li>
-                <li id="fiTab" class="slds-tabs_scoped__item" title="Assets" rel="2" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">Assets</a></li>
-                <li id="fiTab" class="slds-tabs_scoped__item" title="Liabilities" rel="2" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">Liabilities</a></li>
-                <li id="fiTab" class="slds-tabs_scoped__item" title="Existing Risk Insurance" rel="2" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">Existing Risk Insurance</a></li>
-                <li id="fiTab" class="slds-tabs_scoped__item" title="Estate Planning" rel="2" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">Estate Planning</a></li>
-                <li id="fiTab" class="slds-tabs_scoped__item" title="Existing Professional Contact" rel="2" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">Existing Professional Contact</a></li>
-                <li id="fiTab" class="slds-tabs_scoped__item" title="Final Checks - Client" rel="2" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">Final Checks - Client</a></li>
+                <li id="fiTab" class="slds-tabs_scoped__item" title="Income" rel="3" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-4" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-4" id="tab-scoped-4__item">Income</a></li>
+                <li id="fiTab" class="slds-tabs_scoped__item" title="Expenses" rel="4" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-5" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-5" id="tab-scoped-5__item">Expenses</a></li>
+                <li id="fiTab" class="slds-tabs_scoped__item" title="Assets" rel="5" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-6" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-6" id="tab-scoped-6__item">Assets</a></li>
+                <li id="fiTab" class="slds-tabs_scoped__item" title="Liabilities" rel="6" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-7" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-7" id="tab-scoped-7__item">Liabilities</a></li>
+                <li id="fiTab" class="slds-tabs_scoped__item" title="Existing Risk Insurance" rel="7" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-8" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-8" id="tab-scoped-8__item">Existing Risk Insurance</a></li>
+                <li id="fiTab" class="slds-tabs_scoped__item" title="Estate Planning" rel="8" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-9" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-9" id="tab-scoped-9__item">Estate Planning</a></li>
+                <li id="fiTab" class="slds-tabs_scoped__item" title="Existing Professional Contact" rel="9" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-10" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-10" id="tab-scoped-10__item">Existing Professional Contact</a></li>
+                <li id="fiTab" class="slds-tabs_scoped__item" title="Final Checks - Client" rel="10" role="presentation"><a class="slds-tabs_scoped__link" href="#tabs-11" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-11" id="tab-scoped-11__item">Final Checks - Client</a></li>
             </ul>
             <div id="tabs-1" class="slds-tabs_scoped__content slds-show" role="tabpanel" aria-labelledby="tab-scoped-1__item">
                 <c:PersonalDetailsNew needAnalysis="{!Need_Analysis__c}"></c:PersonalDetailsNew>
@@ -98,7 +100,7 @@
                 <c:EmploymentDetailsNew needAnalysis="{!Need_Analysis__c}"></c:EmploymentDetailsNew>
             </div>
             <div id="tabs-4" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-4__item">
-                <c:EmploymentDetails ></c:EmploymentDetails>
+                <c:Income needAnalysis="{!Need_Analysis__c}"></c:Income>
             </div>
             <div id="tabs-5" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-5__item">
                 <c:EmploymentDetails ></c:EmploymentDetails>

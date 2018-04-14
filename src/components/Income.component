@@ -1,2 +1,421 @@
-<apex:component >
+<apex:component controller="NeedAnalysisController">
+    <apex:attribute name="needAnalysis" type="Need_Analysis__c" description="Need Analysis object"/>
+    <apex:attribute name="defaultValue" type="Integer" default="0" description="Default Value"/>
+    <apex:attribute name="income" type="Income__c" description="Income object"/>
+
+    <script type="text/javascript">
+        var euId = 0;
+        var ueuId = 0;
+        var incomeDetails;
+
+        function Income__c(){
+            this.Earned_Income_Type__c = null;
+            this.Owner__c =- null;
+            this.Type__c = null;
+            this.Annual_Gross__c = null;
+            this.Need_Analysis__c = null;
+            this.Unearned_Income_Type__c = null;
+            this.RowNum__c = null;
+        }
+
+        function insertEarnedIncomeRow(){
+            $("#earnedIncomeTable").each(function (i) {
+                var uId = ++euId;
+                var tds = '<tr class="spaceUnder" id="in'+(uId)+'">';
+                //var dependent = new sforce.sObject("Dependent__c");
+                //console.log($("[id$=dependentAttr]").val());
+                tds += '<td><input id="check" type="checkbox"/></td>';
+                tds += '<td><select id="earnedIncomeType'+uId+'"></select></td>';
+                tds += '<td><select id="owner'+uId+'"></select></td>';
+                tds += '<td><input id="annualGross" onchange="calculateGross(\'earned\');"></input></td>';
+                tds += '<td><input id="rowNum" type="hidden" value="'+uId+'"/></td>';
+                tds += '<td><input id="rowId" type="hidden"/></td>';
+                tds += '<td><input id="type" type="hidden" value="earned"/></td>';
+
+                tds += '</tr>';
+                if ($('tbody', this).length > 0) {
+                    $('tbody', this).append(tds);
+                } else {
+                    $(this).append(tds);
+                }
+                $('select[id$=earInc] option').clone().appendTo('#earnedIncomeType'+uId);
+                //$("select[id*=relTo]").empty();
+                $("#owner"+uId).append(new Option('--None--',''));
+                if($('#First_Name_C1__c').val() != null && $('#First_Name_C1__c').val() != ''){
+                    $("#owner"+uId).append(new Option($('#First_Name_C1__c').val(), $('#First_Name_C1__c').val()));
+                }
+                if($('#First_Name_C2__c').val() != null && $('#First_Name_C2__c').val() != '' ){
+                    $("#owner"+uId).append(new Option($('#First_Name_C2__c').val(), $('#First_Name_C2__c').val()));
+                }
+                if($('#First_Name_C1__c').val() != null && $('#First_Name_C1__c').val() != '' && $('#First_Name_C2__c').val() != null && $('#First_Name_C2__c').val() != '' ){
+                    $("#owner"+uId).append(new Option($('#First_Name_C1__c').val()+' & '+$('#First_Name_C2__c').val(), $('#First_Name_C1__c').val()+' & '+$('#First_Name_C2__c').val()));
+                }
+            });
+        }
+
+        function insertUnearnedIncomeRow(){
+            $("#unearnedIncomeTable").each(function (i) {
+                var uId = ++ueuId;
+                var tds = '<tr class="spaceUnder" id="in'+(uId)+'">';
+                //var dependent = new sforce.sObject("Dependent__c");
+                //console.log($("[id$=dependentAttr]").val());
+                tds += '<td><input id="check" type="checkbox"/></td>';
+                tds += '<td><select id="unearnedIncomeType'+uId+'"></select></td>';
+                tds += '<td><select id="ownerUe'+uId+'"></select></td>';
+                tds += '<td><input id="annualGross" onchange="calculateGross(\'unearned\');"></input></td>';
+                tds += '<td><input id="rowNum" type="hidden" value="'+uId+'"/></td>';
+                tds += '<td><input id="rowId" type="hidden"/></td>';
+                tds += '<td><input id="type" type="hidden" value="unearned"/></td>';
+
+                tds += '</tr>';
+                if ($('tbody', this).length > 0) {
+                    $('tbody', this).append(tds);
+                } else {
+                    $(this).append(tds);
+                }
+                $('select[id$=unearInc] option').clone().appendTo('#unearnedIncomeType'+uId);
+                $("#ownerUe"+uId).append(new Option('--None--',''));
+                if($('#First_Name_C1__c').val() != null && $('#First_Name_C1__c').val() != ''){
+                    $("#ownerUe"+uId).append(new Option($('#First_Name_C1__c').val(), $('#First_Name_C1__c').val()));
+                }
+                if($('#First_Name_C2__c').val() != null && $('#First_Name_C2__c').val() != '' ){
+                    $("#ownerUe"+uId).append(new Option($('#First_Name_C2__c').val(), $('#First_Name_C2__c').val()));
+                }
+                if($('#First_Name_C1__c').val() != null && $('#First_Name_C1__c').val() != '' && $('#First_Name_C2__c').val() != null && $('#First_Name_C2__c').val() != '' ){
+                    $("#ownerUe"+uId).append(new Option($('#First_Name_C1__c').val()+' & '+$('#First_Name_C2__c').val(), $('#First_Name_C1__c').val()+' & '+$('#First_Name_C2__c').val()));
+                }
+            });
+        }
+
+        function calculateGross(tab){
+            var grossMap = new Object();
+            var firstNameC1 = $('#First_Name_C1__c').val();
+            var firstNameC2 = $('#First_Name_C2__c').val();
+            grossMap[firstNameC1] = 0.00;
+            grossMap[firstNameC2] = 0.00;
+            grossMap[firstNameC1+' & '+firstNameC2] = 0.00;
+
+            $('#'+tab+'IncomeTable tr').each(function(i,row){
+                var $row = $(row),
+                    $owner = $row.find('select[id*=owner]'),
+                    $gross = $row.find('#annualGross');
+                if(grossMap[$owner.val()] == undefined){
+                    grossMap[$owner.val()] = $gross.val()*1.00;
+                }else{
+                    grossMap[$owner.val()] = +grossMap[$owner.val()] + +($gross.val()*1.00);
+                }
+            });
+            var client1Gross = grossMap[firstNameC1];
+            var client2Gross = grossMap[firstNameC2];
+            var combined = grossMap[firstNameC1+' & '+firstNameC2];
+
+            if(combined > 0){
+                client1Gross = +client1Gross + +(combined/2);
+                client2Gross = +client2Gross + +(combined/2);
+            }
+
+            var label = tab.charAt(0).toUpperCase() + tab.slice(1);
+            $('label[id$=customer1'+label+'IncomeValue]').html(client1Gross.toFixed(2));
+            $('label[id$=customer2'+label+'IncomeValue]').html(client2Gross.toFixed(2));
+            totals();
+        }
+
+        function totals(){
+            var c1EGross = $('label[id$=customer1EarnedIncomeValue]').html();
+            var c2EGross = $('label[id$=customer2EarnedIncomeValue]').html();
+            var c1UGross = $('label[id$=customer1UnearnedIncomeValue]').html();
+            var c2UGross = $('label[id$=customer2UnearnedIncomeValue]').html();
+
+            $('label[id$=customer1TotalIncomeValue]').html((+c1EGross + +c1UGross).toFixed(2));
+            $('label[id$=customer2TotalIncomeValue]').html((+c2EGross + +c2UGross).toFixed(2));
+        }
+
+        function assignLabels(field,divB,label){
+            $('label[id$=customer1'+label+'IncomeLabel]').html($('#First_Name_C1__c').val()+'\'s Total '+label+' Income:');
+            $('label[id$=customer2'+label+'IncomeLabel]').html($('#First_Name_C2__c').val()+'\'s Total '+label+' Income:');
+
+            $('label[id$=customer1TotalIncomeLabel]').html($('#First_Name_C1__c').val()+' Grand Total:');
+            $('label[id$=customer2TotalIncomeLabel]').html($('#First_Name_C2__c').val()+' Grand Total:');
+
+            $('label[id$=customer1CashflowIncomeLabel]').html($('#First_Name_C1__c').val());
+            $('label[id$=customer2CashflowIncomeLabel]').html($('#First_Name_C2__c').val());
+            if($('select[id$='+field+']').val() == 'Yes, provide details'){
+                $('span[id$='+divB+']').show();
+                $('span[id$='+divB+'Block]').show();
+                $('#summary').show();
+            }else{
+                $('span[id$='+divB+']').hide();
+                $('span[id$='+divB+'Block]').hide();
+                $('#summary').hide();
+            }
+        }
+
+        function saveIncomeDetails(){
+            needAnalysis.Provide_Details_Earned_Income__c = $('select[id$=earned]').val();
+            needAnalysis.Provide_Details_Unearned_Income__c = $('select[id$=unearned]').val();
+            needAnalysis.Cash_Flow_C1__c = $('input[id$=customer1CashflowIncomeValue]').val();
+            needAnalysis.Cash_Flow_C2__c = $('input[id$=customer2CashflowIncomeValue]').val();
+            needAnalysis.Id = $('#needAnalysisId').val();
+
+            incomeDetails = [];
+            fetchIncomeDetails();
+            createIncomeDetails();
+        }
+
+        function createIncomeDetails(){
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.NeedAnalysisController.upsertIncomeDetails}',JSON.stringify(needAnalysis),JSON.stringify(incomeDetails),
+                function(result, event){
+                    if (event.status) {
+                        console.log(result);
+                        for(i=0;i<=result.length;i++){
+                            $('table[Id$=IncomeTable] tr[Id*=in]').each(function(i,row){
+                                $(this).each(function(k,row){
+                                    var $row = $(row),
+                                        $rId = $row.find('input[id*="rowId"]'),
+                                        $rNum = $row.find('input[id*="rowNum"]'),
+                                        $type = $row.find('input[id*="type"]');
+                                    console.log(result[i]);
+                                    if(result[i] != undefined && $rNum.val() == result[i].RowNum__c && result[i].Type__c == $type.val()){
+                                        $rId.val(result[i].Id);
+                                    }
+                                });
+                            });
+                        }
+                    } else if (event.type === 'exception') {
+                        
+                    } else {
+                        
+                    }
+                }, 
+                {escape: true}
+            );
+        }
+
+        function fetchIncomeDetails(){
+             $('table[Id$=IncomeTable] tr[Id*=in]').each(function(i,row){
+                var income = new Income__c();
+                var $row = $(row),
+                    $earnedType = $row.find('select[id*=earnedIncomeType]'),
+                    $owner = $row.find('select[id*=owner]'),
+                    $type = $row.find('input[id$="type"]'),
+                    $rId = $row.find('input[id*="rowId"]'),
+                    $rNum = $row.find('input[id*="rowNum"]'),
+                    $gross = $row.find('#annualGross');
+
+                if($type.val() == 'earned'){
+                    income.Type__c = $type.val();
+                    income.Earned_Income_Type__c = $earnedType.val();
+                }else{
+                    income.Type__c = $type.val();
+                    income.Unearned_Income_Type__c = $earnedType.val();
+                }
+                income.Owner__c = $owner.val();
+                income.Annual_Gross__c = $gross.val();
+                income.Need_Analysis__c = $('#needAnalysisId').val();
+                income.RowNum__c = $rNum.val();
+                if($rId.val() != ''){
+                    income.Id = $rId.val();
+                }
+                incomeDetails.push(income);
+            });
+        }
+
+        function deleteIncomeRow(tab){
+            var delIds = [];
+             $('#'+tab+'IncomeTable tr[Id*=in]').each(function(i,row){
+                var $row = $(row),
+                    $rId = $row.find('input[id*="rowId"]'),
+                    $checked = $row.find('input[id*="check"]');
+                console.log($checked.val());
+                if($checked.val()== 'on' && $rId.val() != ''){
+                    delIds.push($rId.val());
+                }
+            });
+            console.log(delIds);
+            $('#'+tab+'IncomeTable tr[Id*=in] input[type="checkbox"]:checked').parent().parent().remove();
+            calculateGross(tab);
+
+            if(delIds.length > 0){
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.NeedAnalysisController.deleteIncomeRec}',delIds,
+                    function(result, event){
+                        if (event.status) {
+                            console.log(result);
+                        } else if (event.type === 'exception') {
+                            
+                        } else {
+                            
+                        }
+                    }, 
+                    {escape: true}
+                );
+            }
+        }
+
+        function calculateCashflow(){
+            var c1 = $('input[id$=customer1CashflowIncomeValue]').val();
+            var c2 = $('input[id$=customer2CashflowIncomeValue]').val();
+
+            $('label[id$=totalCashflowValue]').html(+c1 + +c2);
+        }
+    </script>
+
+    <apex:inputField id="earInc" value="{!income.Earned_Income_Type__c}" style="display:none;"></apex:inputField>
+    <apex:inputField id="unearInc" value="{!income.Unearned_Income_Type__c}" style="display:none;"></apex:inputField>
+    <apex:pageBlock>
+        <apex:pageBlockButtons location="top">
+            <apex:commandButton value="Save" onclick="saveIncomeDetails();return false;"/>
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection id="IncomePageBlockSection" columns="2">
+            <apex:pageBlock title = "Earned Details" id="earnedPageBlock">
+                    <apex:pageBlockSection columns="1">
+                        <apex:pageBlockSectionItem>
+                            <apex:outputLabel>Are you happy to provide these details?</apex:outputLabel>
+                            <apex:inputField id="earned" value="{!needAnalysis.Provide_Details_Earned_Income__c}" onchange="assignLabels('earned','earnedDiv','Earned');"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:outputPanel id="earnedDiv" style="display:none;">
+                            <apex:pageMessage   detail="Fill in the fields below. Click the ADD button to create a new item, or click the FILL DOWN button to create a new item based on the details of the last item. To remove, tick any items and click DELETE."
+                                                severity = "info"
+                                                strength = "0"
+                                                id = "earnedMessage"
+                            />
+                            <apex:pageBlock title="Add Earned Income">
+                                <apex:pageBlockButtons location="bottom">
+                                    <apex:commandButton onclick="insertEarnedIncomeRow();return false;" value="Add"/>
+                                    <apex:commandButton onclick="deleteIncomeRow('earned');return false;" value="Delete"/>
+                                    <apex:commandButton onclick="insertEarnedIncomeRow();return false;" value="Fill Down"/>
+                                </apex:pageBlockButtons>
+                                <table id="earnedIncomeTable">
+                                    <thead>
+                                        <th/>
+                                        <th>Earned Income Type</th>
+                                        <th>Owner</th>
+                                        <th>Annual Gross($)</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </apex:pageBlock>
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+                    <apex:outputPanel id="earnedDivBlock" style="display:none;">
+                        <div class="pbSubheader brandTertiaryBgr tertiaryPalette">
+                            <h3>Earned Totals</h3>
+                        </div>
+                        <div>
+                            <table>
+                                <tr>
+                                    <th>
+                                        <apex:outputLabel id="customer1EarnedIncomeLabel"></apex:outputLabel>
+                                    </th>
+                                    <td>
+                                        $&nbsp;
+                                        <apex:outputLabel id="customer1EarnedIncomeValue">0.00</apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <apex:outputLabel id="customer2EarnedIncomeLabel"></apex:outputLabel>
+                                    </th>
+                                    <td>
+                                        $&nbsp;
+                                        <apex:outputLabel id="customer2EarnedIncomeValue">0.00</apex:outputLabel>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </apex:outputPanel>
+            </apex:pageBlock>
+            <apex:pageBlock title = "Unearned Details" id="unearnedPageBlock">
+                <apex:pageBlockSection columns="1">
+                    <apex:pageBlockSectionItem>
+                        <apex:outputLabel>Are you happy to provide these details?</apex:outputLabel>
+                        <apex:inputField id="unearned" value="{!needAnalysis.Provide_Details_Earned_Income__c}" onchange="assignLabels('unearned','unearnedPanel','Unearned');"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:outputPanel id="unearnedPanel" style="display:none;">
+                        <apex:pageMessage   detail="Fill in the fields below. Click the ADD button to create a new item, or click the FILL DOWN button to create a new item based on the details of the last item. To remove, tick any items and click DELETE."
+                                            severity = "info"
+                                            strength = "0"
+                                            id = "unearnedMessage"
+                        />
+                        <apex:pageBlock title="Add Earned Income">
+                            <apex:pageBlockButtons location="bottom">
+                                <apex:commandButton onclick="insertUnearnedIncomeRow();return false;" value="Add"/>
+                                <apex:commandButton onclick="deleteIncomeRow('unearned');return false;" value="Delete"/>
+                                <apex:commandButton onclick="insertUnearnedIncomeRow();return false;" value="Fill Down"/>
+                            </apex:pageBlockButtons>
+                            <table id="unearnedIncomeTable">
+                                <thead>
+                                    <th/>
+                                    <th>Unearned Income Type</th>
+                                    <th>Owner</th>
+                                    <th>Annual Gross($)</th>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </apex:pageBlock>
+                    </apex:outputPanel>
+                </apex:pageBlockSection>
+                <apex:outputPanel id="unearnedPanelBlock" style="display:none;">
+                    <div class="pbSubheader brandTertiaryBgr tertiaryPalette">
+                        <h3>Unearned Totals</h3>
+                    </div>
+                    <div>
+                        <table>
+                            <tr>
+                                <th>
+                                    <apex:outputLabel id="customer1UnearnedIncomeLabel"></apex:outputLabel>
+                                </th>
+                                <td>
+                                    $&nbsp;
+                                    <apex:outputLabel id="customer1UnearnedIncomeValue">0.00</apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <apex:outputLabel id="customer2UnearnedIncomeLabel"></apex:outputLabel>
+                                </th>
+                                <td>
+                                    $&nbsp;
+                                    <apex:outputLabel id="customer2UnearnedIncomeValue">0.00</apex:outputLabel>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </apex:outputPanel>
+            </apex:pageBlock>
+        </apex:pageBlockSection>
+        <div id="summary" style="display:none;">
+            <apex:pageBlockSection columns="1" title="Grand Total" collapsible="false">
+                <apex:pageBlockSectionItem>
+                    <apex:outputLabel id="customer1TotalIncomeLabel"></apex:outputLabel>
+                    <apex:outputPanel> $&nbsp;
+                        <apex:outputLabel id="customer1TotalIncomeValue">0.00</apex:outputLabel>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem>
+                    <apex:outputLabel id="customer2TotalIncomeLabel"></apex:outputLabel>
+                    <apex:outputPanel> $&nbsp;
+                        <apex:outputLabel id="customer2TotalIncomeValue">0.00</apex:outputLabel>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1" title="Cashflow - Total monthly net income (after tax)" collapsible="false">
+                <apex:pageBlockSectionItem>
+                    <apex:outputLabel id="customer1CashflowIncomeLabel"></apex:outputLabel>
+                    <apex:inputField id="customer1CashflowIncomeValue" value="{!needAnalysis.Cash_Flow_C1__c}" onchange="calculateCashflow();"></apex:inputField>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem>
+                    <apex:outputLabel id="customer2CashflowIncomeLabel"></apex:outputLabel>
+                    <apex:inputField id="customer2CashflowIncomeValue" value="{!needAnalysis.Cash_Flow_C2__c}" onchange="calculateCashflow();"></apex:inputField>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem>
+                    <apex:outputLabel id="totalCashflowLabel"> Total monthly net income (combined, after tax) (A) </apex:outputLabel>
+                    <apex:outputLabel id="totalCashflowValue"></apex:outputLabel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </div>
+    </apex:pageBlock>
 </apex:component>

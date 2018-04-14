@@ -60,6 +60,10 @@
             this.Main_source_of_income_C2__c = '';
             this.Expected_retirement_age_C1__c = '';
             this.Expected_retirement_age_C2__c = '';
+            this.Provide_Details_Earned_Income__c = '';
+            this.Provide_Details_Unearned_Income__c = '';
+            this.Cash_Flow_C1__c = '';
+            this.Cash_Flow_C2__c = '';
             if( $('#needAnalysisId').val() != ''){
                 this.Id = $('#needAnalysisId').val();
             }
@@ -103,7 +107,7 @@
         }
     </script>
     <apex:pageBlock >
-        <apex:pageBlockButtons style="text-align:center;">
+        <apex:pageBlockButtons>
             <apex:commandButton value="Save" onclick="upsertNeedAnalysis(); return false;"></apex:commandButton>
         </apex:pageBlockButtons>
         <apex:pageBlockSection columns="3" showHeader="false">

@@ -12,19 +12,19 @@
             var naId = $('#needAnalysisId').val();
             $("select[id*=relTo]").empty();
             $("select[id*=relTo]").append(new Option('--None--',''));
-            Visualforce.remoting.Manager.invokeAction(
+            if($('#First_Name_C1__c').val() != null && $('#First_Name_C1__c').val() != '' && $('#Surname_C1__c').val() != null && $('#Surname_C1__c').val() != ''){
+                $("select[id*=relTo]").append(new Option($('#First_Name_C1__c').val()+' '+$('#Surname_C1__c').val(), $('#First_Name_C1__c').val()+' '+$('#Surname_C1__c').val()));
+                $("select[id*=relTo]").show();
+            }
+            if($('#First_Name_C2__c').val() != null && $('#First_Name_C2__c').val() != '' && $('#Surname_C2__c').val() != null && $('#Surname_C2__c').val() != ''){
+                $("select[id*=relTo]").append(new Option($('#First_Name_C2__c').val()+' '+$('#Surname_C2__c').val(), $('#First_Name_C2__c').val()+' '+$('#Surname_C2__c').val()));
+                $("select[id*=relTo]").show();
+            }
+            /*Visualforce.remoting.Manager.invokeAction(
                 '{!$RemoteAction.NeedAnalysisController.queryNeedAnalysis}',naId,
                 function(result, event){
                     if (event.status) {
                         var naObj = result;
-                        if(naObj.First_Name_C1__c != null && naObj.First_Name_C1__c != '' && naObj.Surname_C1__c != null && naObj.Surname_C1__c != ''){
-                            $("select[id*=relTo]").append(new Option(naObj.First_Name_C1__c+' '+naObj.Surname_C1__c, naObj.First_Name_C1__c+' '+naObj.Surname_C1__c));
-                            $("select[id*=relTo]").show();
-                        }
-                        if(naObj.First_Name_C2__c != null && naObj.First_Name_C2__c != '' && naObj.Surname_C2__c != null && naObj.Surname_C2__c != ''){
-                            $("select[id*=relTo]").append(new Option(naObj.First_Name_C2__c+' '+naObj.Surname_C2__c, naObj.First_Name_C2__c+' '+naObj.Surname_C2__c));
-                            $("select[id*=relTo]").show();
-                        }
                     } else if (event.type === 'exception') {
                         
                     } else {
@@ -309,8 +309,6 @@
                         <th>Place of Birth</th>
                     </thead>
                     <tbody>
-                        <tr class="spaceUnder" id="dp0">
-                        </tr>
                     </tbody>
                 </table>
             </div>

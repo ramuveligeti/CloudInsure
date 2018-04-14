@@ -36,7 +36,7 @@
             }
         }
 
-        function saveEmploymentDetails(empBlock,){
+        function saveEmploymentDetails(){
             needAnalysis.Details_C1__c = $('select[id$=Details1]').val();
             needAnalysis.Details_C2__c = $('select[id$=Details2]').val();
             needAnalysis.IRD_Number_C1__c = $('input[id$=ird1]').val();
@@ -134,7 +134,7 @@
         }
     </script>
     <apex:pageBlock >
-        <apex:pageBlockButtons style="text-align:center;">
+        <apex:pageBlockButtons>
             <input type="button" class="insertBtn" value="Save" id="addBtn" onclick="saveEmploymentDetails();"></input>
         </apex:pageBlockButtons>
         <apex:pageBlockSection columns="3" showHeader="false">
@@ -213,7 +213,7 @@
                         <input id="startDate" type="date"/>
                     </apex:pageBlockSectionItem>
                     <apex:pageBlockSectionItem>
-                        <apex:outputLabel>Start Date</apex:outputLabel>
+                        <apex:outputLabel>End Date</apex:outputLabel>
                         <input id="endDate" type="date"/>
                     </apex:pageBlockSectionItem>
                     <apex:inputField id="empName" value="{!employeeDetail.Employer_Name__c}"/>
@@ -231,7 +231,7 @@
             <apex:outputPanel id="empBlockPanel1" style="display:none;">
                 <apex:pageBlockSectionItem >
                     <apex:pageBlock id="employeeBlock1">
-                        <apex:pageBlockButtons location="top" style="text-align:center;">
+                        <apex:pageBlockButtons location="top">
                             <apex:commandButton value ="Add" onclick="addNewEmployement('employeeBlock1','relTo1');return false;"/>
                         </apex:pageBlockButtons>
                     </apex:pageBlock>
@@ -240,7 +240,7 @@
             <apex:outputPanel id="empBlockPanel2" style="display:none;">
                 <apex:pageBlockSectionItem >
                     <apex:pageBlock id="employeeBlock2">
-                        <apex:pageBlockButtons location="top" style="text-align:center;">
+                        <apex:pageBlockButtons location="top">
                             <apex:commandButton onclick="addNewEmployement('employeeBlock2','relTo2');return false;" value="Add"></apex:commandButton>
                         </apex:pageBlockButtons>
                     </apex:pageBlock>
